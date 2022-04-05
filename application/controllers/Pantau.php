@@ -63,9 +63,9 @@ class Pantau extends CI_Controller
 
 	public function keterangan()
 	{
-		$keterangan = $this->dbpantau->get_keterangan($this->input->post("IdItem"))->result_array();
+		$keterangan = $this->dbpantau->get_keterangan($this->input->post("iditem"))->result_array();
 		foreach ($keterangan as $row) {
-			echo $row["Keterangan"];
+			echo $row["keterangan"];
 		}
 		//cho $this->input->post("IdItem");
 		//echo $keterangan;

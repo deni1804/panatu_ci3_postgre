@@ -45,7 +45,7 @@
 			$.ajax({
 				type: 'POST',
 				url: '<?php echo site_url() . 'pantau/keterangan'; ?>',
-				data: 'IdItem=' + iditem,
+				data: 'iditem=' + iditem,
 				success: function(data) {
 
 					$('#dialog').html(data);

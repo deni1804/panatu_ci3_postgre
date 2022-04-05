@@ -44,7 +44,7 @@
 								<td>' . $no . '</td>
 								<td>';
 						echo form_hidden('item' . $row['iditem'], $row['iditem']);
-						echo '<a data-toggle="modal" data-target="#keterangan" href="#" onClick="javascript:sop(' . $row['IdItem'] . ', \'' . $row['item'] . '\')">' . $row['item'] .
+						echo '<a data-toggle="modal" data-target="#keterangan" href="#" onClick="javascript:sop(' . $row['iditem'] . ', \'' . $row['item'] . '\')">' . $row['item'] .
 							'</a>
 								</td>
 								<td>';
