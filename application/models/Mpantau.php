@@ -31,7 +31,7 @@ class Mpantau extends CI_Model
 
 	function update_item()
 	{
-		$this->db->WHERE('IdItem', $this->input->post('iditem'));
+		$this->db->WHERE('iditem', $this->input->post('iditem'));
 	}
 
 
@@ -51,7 +51,7 @@ class Mpantau extends CI_Model
 			//$query = 'SELECT ip.item AS item, DATE_FORMAT(ps.tanggaljam, "%H:%i:%s") AS Jam, ps.status,ps.tingkatstatus, ps.keterangan FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND DATE_FORMAT(ps.tanggaljam, "%m-%d-%Y") = DATE_FORMAT(NOW(), "%m-%d-%Y") ORDER BY ps.tanggaljam DESC';
 			$query = 'SELECT ip.item AS item, (ps.tanggaljam, "%H:%i:%s") AS Jam, ps.status,ps.tingkatstatus, ps.keterangan FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND (ps.tanggaljam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") ORDER BY ps.tanggaljam DESC';
 		} else if ($temp == 2) {
-			$query = 'SELECT ip.Item AS Item, (ps.TanggalJam, "%H:%i:%s") AS Jam, ps.Status,ps.TingkatStatus,ps.Keterangan  FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.IdItem = ip.IdItem WHERE ps.IdKaryawan = ' . $this->session->userdata("userid") . ' AND (date_add(ps.TanggalJam, INTERVAL 1 DAY), "%m-%d-%Y") = (NOW(), "%m-%d-%Y") ORDER BY ps.TanggalJam DESC';
+			$query = 'SELECT ip.item AS item, (ps.tanggaljam, "%H:%i:%s") AS Jam, ps.status,ps.tingkatstatus,ps.keterangan  FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND (date_add(ps.tanggaljam, INTERVAL 1 DAYS), "%m-%d-%Y") = (NOW(), "%m-%d-%Y") ORDER BY ps.tanggaljam DESC';
 		} elseif ($temp == 3) {
 			$query = 'SELECT ip.Item AS Item, (ps.TanggalJam, "%H:%i:%s") AS Jam, ps.Status,ps.TingkatStatus, ps.Keterangan,ps.TanggalJam FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.IdItem = ip.IdItem WHERE ps.IdKaryawan = ' . $this->session->userdata("userid") . ' AND ps.IdItem =  1  AND (ps.TanggalJam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") ORDER BY ps.TanggalJam DESC';
 		} elseif ($temp == 4) {
@@ -77,9 +77,9 @@ class Mpantau extends CI_Model
 	{
 		if ($list == 1) {
 
-			$query = ' SELECT kh.Username AS Username, ip.Item AS Item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.IdItem = ip.IdItem JOIN kh_karyawan kh ON ps.IdKaryawan = kh.IdKaryawan WHERE  ps.IdItem =  1  AND (ps.TanggalJam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") GROUP BY kh.Username , Ip.Item';
+			$query = ' SELECT kh.Username AS username, ip.Item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND (ps.tanggaljam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") GROUP BY kh.username , Ip.item';
 		} elseif ($list == 2) {
-			$query = ' SELECT kh.Username AS Username, ip.Item AS Item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.IdItem = ip.IdItem JOIN kh_karyawan kh ON ps.IdKaryawan = kh.IdKaryawan WHERE  ps.IdItem =  1  AND (ps.TanggalJam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") GROUP BY kh.Username , Ip.Item';
+			$query = ' SELECT kh.username AS Username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND (ps.tanggaljam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") GROUP BY kh.username , Ip.item';
 		}
 		return $this->db->query($query);
 	}

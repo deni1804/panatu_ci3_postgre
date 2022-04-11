@@ -68,8 +68,8 @@ class Login extends CI_Controller
 		if ($this->session->userdata("username") != "") {
 			$this->load->library('form_validation');
 			$this->form_validation->set_rules('name', 'Name', 'required|trim');
-			$this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[kh_karyawan.Username]');
-			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[kh_karyawan.Email]');
+			$this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[kh_karyawan.username]');
+			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[kh_karyawan.email]');
 			$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', ['matches' => 'Password dont match!', 'min_length' => 'Password too short!']);
 			$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
 

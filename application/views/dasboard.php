@@ -6,35 +6,35 @@
         <?php
 
         foreach ($portdata as $key => $value) {
-            $datachart[] = ['label' => $value['TanggalJam'], 'y' => $value['TingkatStatus']];
+            $datachart[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
         //print_r(json_encode($datachart, JSON_NUMERIC_CHECK));
         //echo "</br>";
         ?>
         <?php
         foreach ($aissat as $key => $value) {
-            $aissatapp[] = ['label' => $value['TanggalJam'], 'y' => $value['TingkatStatus']];
+            $aissatapp[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
         //print_r(json_encode($aissatapp, JSON_NUMERIC_CHECK));
         //echo "</br>";
         ?>
         <?php
         foreach ($m2prime as $key => $value) {
-            $m2p[] = ['label' => $value['TanggalJam'], 'y' => $value['TingkatStatus']];
+            $m2p[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
         //print_r(json_encode($m2p, JSON_NUMERIC_CHECK));
         //echo "</br>";
         ?>
         <?php
         foreach ($mrtg as $key => $value) {
-            $mg[] = ['label' => $value['TanggalJam'], 'y' => $value['TingkatStatus']];
+            $mg[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
         //print_r(json_encode($mg, JSON_NUMERIC_CHECK));
         //echo "</br>";
         ?>
         <?php
         foreach ($web as $key => $value) {
-            $wb[] = ['label' => $value['TanggalJam'], 'y' => $value['TingkatStatus']];
+            $wb[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
         //print_r(json_encode($wb, JSON_NUMERIC_CHECK));
         //echo "</br>";
@@ -51,7 +51,7 @@
 
         foreach ($sekarang as $key => $value) {
 
-            $dataPoints[] = ['label' => $value['Item'], 'y' => $value['TingkatStatus']];
+            $dataPoints[] = ['label' => $value['item'], 'y' => $value['tingkatstatus']];
         };
         //echo "</br>";
         //print_r(json_encode($dataPoints, JSON_NUMERIC_CHECK));
@@ -60,7 +60,7 @@
         <?php
         foreach ($kemaren as $key => $value) {
 
-            $dataais[] = ['label' => $value['Item'], 'y' => $value['TingkatStatus']];
+            $dataais[] = ['label' => $value['item'], 'y' => $value['tingkatstatus']];
         };
 
         //print_r(json_encode($dataais, JSON_NUMERIC_CHECK));

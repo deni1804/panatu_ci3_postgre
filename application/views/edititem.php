@@ -13,23 +13,23 @@
                         <?= $this->session->flashdata('message'); ?>
                         <form class="user" method="POST" action="<?= base_url('history/edit_item'); ?>">
                             <div class="form-group">
-                                <input type="text" class="form-control" id="iditem" name="iditem" placeholder="ID Item" value="<?= $IdItem['IdItem']; ?>" readonly>
+                                <input type="text" class="form-control" id="iditem" name="iditem" placeholder="ID Item" value="<?= $iditem['iditem']; ?>" readonly>
                                 <?= form_error('iditem', '<small class="text-danger">', '</small>'); ?>
                             </div>
 
                             <div class="form-group">
-                                <input type="text" class="form-control" id="name" name="itemname" placeholder="Item Name" value="<?= $IdItem['Item']; ?>">
+                                <input type="text" class="form-control" id="name" name="itemname" placeholder="Item Name" value="<?= $iditem['item']; ?>">
                                 <?= form_error('itemname', '<small class="text-danger">', '</small>'); ?>
                             </div>
                             <div class="form-group">
-                                <textarea class="form-control" id="keterangan" name="keterangan" rows="3" placeholder="Description"><?= $IdItem['Keterangan']; ?></textarea>
+                                <textarea class="form-control" id="keterangan" name="keterangan" rows="3" placeholder="Description"><?= $iditem['keterangan']; ?></textarea>
                             </div>
                             <div class=" form-group">
                                 <label for="idstatus">Status</label>
 
                                 <select class="form-control col-sm-4 mb-3 mb-sm-0" id="idstatus" name="idstatus">
-                                    <option value="1" <?= ($IdItem['IdStatus'] == 1 ? 'selected' : ''); ?>>Active</option>
-                                    <option value="9" <?= ($IdItem['IdStatus'] == 9 ? 'selected' : ''); ?>>Inactive</option>
+                                    <option value="1" <?= ($iditem['idstatus'] == 1 ? 'selected' : ''); ?>>Active</option>
+                                    <option value="9" <?= ($iditem['idstatus'] == 9 ? 'selected' : ''); ?>>Inactive</option>
                                 </select>
 
                             </div>

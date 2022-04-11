@@ -97,7 +97,7 @@
 							'name' => 'submit' . $row['iditem'],
 							'id' => 'submit' . $row['iditem'],
 							'value' => 'submit' . $row['iditem'],
-							'content' => 'Submit',
+							'content' => 'submit',
 							'onClick' => 'add(' . $row['iditem'] . ')',
 						);
 
@@ -132,11 +132,13 @@
 						<div style="margin-top:15px">
 							Now : <?php
 									date_default_timezone_set("Asia/Jakarta");
-									echo date("H:i:s"); ?>
+									//echo date("H:i:s"); 
+									echo date("Y-m-d H:i:s")
+									?>
 							<table class="table table-borderless">
 								<?php
 								foreach ($pantau as $row) {
-									echo "<tr><td width=\"100px\">" . $row['Jam'] . "</td><td width=\"150px\" style=\"text-align:left;\">" . $row['Item'] . "</td><td width=\"100px\">" . $status[$row['Status']] . "</tr>";
+									echo "<tr><td width=\"100px\">" . $row['jam'] . "</td><td width=\"150px\" style=\"text-align:left;\">" . $row['item'] . "</td><td width=\"100px\">" . $status[$row['Status']] . "</tr>";
 								}
 								?>
 							</table>

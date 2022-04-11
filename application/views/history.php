@@ -32,10 +32,10 @@
 									);
 									foreach ($sekarang as $row) {
 										echo "<tr>
-									<td>" . $row['Jam'] . "</td>
-									<td>" . $row['Item'] . "</td>
-									<td >" . $status[$row['Status']] . "</td>
-									<td >" . $row['Keterangan'] .  "</td>
+									<td>" . $row['jam'] . "</td>
+									<td>" . $row['item'] . "</td>
+									<td >" . $status[$row['status']] . "</td>
+									<td >" . $row['keterangan'] .  "</td>
 									</tr>";
 									}
 									?>
@@ -75,10 +75,10 @@
 									<?php
 									foreach ($kemaren as $row) {
 										echo "<tr>
-									<td >" . $row['Jam'] . "</td>
-									<td>" . $row['Item'] . "</td>
-									<td>" . $status[$row['Status']] . "</td>
-									<td >" . $row['Keterangan'] .  "</td>
+									<td >" . $row['jam'] . "</td>
+									<td>" . $row['item'] . "</td>
+									<td>" . $status[$row['status']] . "</td>
+									<td >" . $row['keterangan'] .  "</td>
 									</tr>";
 									}
 									?>

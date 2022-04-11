@@ -35,15 +35,15 @@
                                     <?php foreach ($item as $row) { ?>
                                         <tr>
                                             <th scope="row"><?= $i; ?></th>
-                                            <td><?= $row['IdItem']; ?></td>
-                                            <td><?= $row['Item']; ?></td>
-                                            <td><?= $status[$row['IdStatus']]; ?></td>
-                                            <td><?= $row['Keterangan']; ?></td>
+                                            <td><?= $row['iditem']; ?></td>
+                                            <td><?= $row['item']; ?></td>
+                                            <td><?= $status[$row['idstatus']]; ?></td>
+                                            <td><?= $row['keterangan']; ?></td>
                                             <td>
-                                                <a href="<?php echo site_url() . 'history/view_edititem/' . $row['IdItem']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                                <a href="<?php echo site_url() . 'history/view_edititem/' . $row['iditem']; ?>" class="btn btn-success btn-sm">Edit</a>
                                                 <br>
                                                 <br>
-                                                <a href="<?php echo site_url() . 'history/delete_item/' . $row['IdItem']; ?>" class="btn btn-danger btn-sm">Delete</a>
+                                                <a href="<?php echo site_url() . 'history/delete_item/' . $row['iditem']; ?>" class="btn btn-danger btn-sm">Delete</a>
                                             </td>
                                         </tr>
 

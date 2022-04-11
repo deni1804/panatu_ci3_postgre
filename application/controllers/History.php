@@ -51,8 +51,8 @@ class History extends CI_Controller
 	public function add_item()
 	{
 		if ($this->session->userdata("username") != "") {
-			$this->form_validation->set_rules('iditem', 'Iditem', 'required|trim|is_unique[ps_itempantauan.IdItem]');
-			$this->form_validation->set_rules('itemname', 'Itemname', 'required|trim|is_unique[ps_itempantauan.Item]');
+			$this->form_validation->set_rules('iditem', 'Iditem', 'required|trim|is_unique[ps_itempantauan.iditem]');
+			$this->form_validation->set_rules('itemname', 'Itemname', 'required|trim|is_unique[ps_itempantauan.item]');
 			$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
 
 			if ($this->form_validation->run() == false) {
@@ -62,11 +62,11 @@ class History extends CI_Controller
 				$this->load->view('include/footer');
 			} else {
 				$data = [
-					'IdItem' => $this->input->post('iditem'),
-					'Item' => htmlspecialchars($this->input->post('itemname', true)),
-					'IdStatus' => $this->input->post('idstatus'),
-					'Sort' => $this->input->post('iditem'),
-					'Keterangan' => $this->input->post('keterangan'),
+					'iditem' => $this->input->post('iditem'),
+					'item' => htmlspecialchars($this->input->post('itemname', true)),
+					'idstatus' => $this->input->post('idstatus'),
+					'sort' => $this->input->post('iditem'),
+					'keterangan' => $this->input->post('keterangan'),
 					//'IdKaryawan' => $this->input->post('idkaryawan')
 
 
@@ -85,7 +85,7 @@ class History extends CI_Controller
 	public function view_edititem($row)
 	{
 		if ($this->session->userdata("username") != "") {
-			$data['IdItem'] = $this->dbpantau->get_iditem($row);
+			$data['iditem'] = $this->dbpantau->get_iditem($row);
 
 			$this->load->view('include/header');
 			$this->load->view('edititem', $data);
@@ -99,9 +99,9 @@ class History extends CI_Controller
 	{
 		if ($this->session->userdata("username") != "") {
 			$this->dbpantau->update_item($row);
-			$this->form_validation->set_rules('iditem', 'Iditem', 'required|trim');
-			$this->form_validation->set_rules('itemname', 'Itemname', 'required|trim');
-			$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
+			$this->form_validation->set_rules('iditem', 'iditem', 'required|trim');
+			$this->form_validation->set_rules('itemname', 'itemname', 'required|trim');
+			$this->form_validation->set_rules('keterangan', 'keterangan', 'required|trim');
 
 			if ($this->form_validation->run() == false) {
 
@@ -110,11 +110,11 @@ class History extends CI_Controller
 				$this->load->view('include/footer');
 			} else {
 				$data = [
-					'IdItem' => $this->input->post('iditem'),
-					'Item' => htmlspecialchars($this->input->post('itemname', true)),
-					'IdStatus' => $this->input->post('idstatus'),
-					'Sort' => $this->input->post('iditem'),
-					'Keterangan' => $this->input->post('keterangan')
+					'iditem' => $this->input->post('iditem'),
+					'item' => htmlspecialchars($this->input->post('itemname', true)),
+					'idstatus' => $this->input->post('idstatus'),
+					'sort' => $this->input->post('iditem'),
+					'keterangan' => $this->input->post('keterangan')
 
 
 
