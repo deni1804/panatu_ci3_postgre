@@ -39,8 +39,13 @@ class Mpantau extends CI_Model
 	function get_pantau()
 	{
 		$data = $this->session->userdata('userid');
+		$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh:ii:ss') AS jam, ps.status,ps.tingkatstatus
+		FROM ps_pantauansistem ps 
+		INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
+		WHERE ps.idkaryawan = $data AND to_char(ps.tanggaljam, 'm-d-Y') = to_char(NOW(), 'm-d-Y') AND to_char(ps.tanggaljam, 'hh') = to_char(now(), 'hh') 
+		ORDER BY ps.tanggaljam";
 		//$query = "SELECT ip.item AS item, DATE_FORMAT(ps.tanggaljam, `%H:%i:%s`) AS jam, ps.status,ps.tingkatstatus FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = $data AND DATE_FORMAT(ps.tanggaljam, `%m-%d-%Y`) = DATE_FORMAT(NOW(), `%m-%d-%Y`) AND DATE_FORMAT(ps.tanggaljam, `%H`) = DATE_FORMAT(now(), `%H`) ORDER BY ps.tanggaljam";
-		$query = "SELECT ip.item AS item , (ps.tanggaljam , '%H:%i:%s' ) AS jam, ps.status,ps.tingkatstatus FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = '$data' AND (ps.tanggaljam, '%m-%d-%Y' ) = (NOW(), '%m-%d-%Y' ) AND (ps.tanggaljam, '%H') = (now(), '%H') ORDER BY ps.tanggaljam";
+		//$query = "SELECT ip.item AS item , (ps.tanggaljam , '%H:%i:%s' ) AS jam, ps.status,ps.tingkatstatus FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = '$data' AND (ps.tanggaljam, '%m-%d-%Y' ) = (NOW(), '%m-%d-%Y' ) AND (ps.tanggaljam, '%H') = (now(), '%H') ORDER BY ps.tanggaljam";
 		//$query = 'SELECT ip.item AS item , (ps.tanggaljam , "%H:%i:%s" ) AS jam, ps.status,ps.tingkatstatus FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND (ps.tanggaljam, "%m-%d-%Y" ) = (NOW(), "%m-%d-%Y" ) AND (ps.tanggaljam, "%H") = (now(), "%H") ORDER BY ps.tanggaljam';
 		return $this->db->query($query);
 	}

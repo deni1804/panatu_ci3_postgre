@@ -38,8 +38,8 @@ class Pantau extends CI_Controller
 		} else {
 			$query = "INSERT INTO ps_pantauansistem (idkaryawan, iditem, status, tingkatstatus, tanggaljam, keterangan) VALUES ";
 			//$datestring = "Year: %Y Month: %m Day: %d - %h:%i %a";
-			//date_default_timezone_set("Asia/Jakarta");
-			$time = date("Y-m-d H:i:s");
+			date_default_timezone_set("Asia/Jakarta");
+			$time = date("Y-m-d h:i:s");
 			//$time = date("yy-m-d h:i:s");
 			foreach ($item as $row) {
 				$query .= "(" . $this->session->userdata('userid') . ", " . $this->input->post('item' . $row['iditem']) . ", " . $this->input->post('status' . $row['iditem']) . ", " . $this->input->post('tingkatstatus' . $row['iditem']) . ", '$time','" . $this->input->post('keterangan'  . $row['iditem']) . "'),";

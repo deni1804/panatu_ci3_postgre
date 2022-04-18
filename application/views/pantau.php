@@ -137,8 +137,9 @@
 									?>
 							<table class="table table-borderless">
 								<?php
+
 								foreach ($pantau as $row) {
-									echo "<tr><td width=\"100px\">" . $row['jam'] . "</td><td width=\"150px\" style=\"text-align:left;\">" . $row['item'] . "</td><td width=\"100px\">" . $status[$row['Status']] . "</tr>";
+									echo "<tr><td width=\"100px\">" . $row['jam'] . "</td><td width=\"150px\" style=\"text-align:left;\">" . $row['item'] . "</td><td width=\"100px\">" . $status[$row['status']] . "</tr>";
 								}
 								?>
 							</table>
