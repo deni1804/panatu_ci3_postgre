@@ -39,7 +39,7 @@ class Mpantau extends CI_Model
 	function get_pantau()
 	{
 		$data = $this->session->userdata('userid');
-		$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh:ii:ss') AS jam, ps.status,ps.tingkatstatus
+		$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh:mi:ss') AS jam, ps.status,ps.tingkatstatus
 		FROM ps_pantauansistem ps 
 		INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
 		WHERE ps.idkaryawan = $data AND to_char(ps.tanggaljam, 'm-d-Y') = to_char(NOW(), 'm-d-Y') AND to_char(ps.tanggaljam, 'hh') = to_char(now(), 'hh') 
@@ -54,9 +54,13 @@ class Mpantau extends CI_Model
 	{
 		if ($temp == 1) {
 			//$query = 'SELECT ip.item AS item, DATE_FORMAT(ps.tanggaljam, "%H:%i:%s") AS Jam, ps.status,ps.tingkatstatus, ps.keterangan FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND DATE_FORMAT(ps.tanggaljam, "%m-%d-%Y") = DATE_FORMAT(NOW(), "%m-%d-%Y") ORDER BY ps.tanggaljam DESC';
-			$query = 'SELECT ip.item AS item, (ps.tanggaljam, "%H:%i:%s") AS Jam, ps.status,ps.tingkatstatus, ps.keterangan FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND (ps.tanggaljam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") ORDER BY ps.tanggaljam DESC';
+			//$query = 'SELECT ip.item AS item, (ps.tanggaljam, "hh:mi:ss") AS Jam, ps.status,ps.tingkatstatus, ps.keterangan FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND (ps.tanggaljam, "m-d-Y") = (NOW(), "m-d-Y") ORDER BY ps.tanggaljam DESC';
+			$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh:mi:ss') AS Jam, ps.status,ps.tingkatstatus, ps.keterangan 
+			FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
+			WHERE ps.idkaryawan = 209 AND to_char(ps.tanggaljam, 'm-d-Y') = to_char(NOW(), 'm-d-Y') 
+			ORDER BY ps.tanggaljam DESC";
 		} else if ($temp == 2) {
-			$query = 'SELECT ip.item AS item, (ps.tanggaljam, "%H:%i:%s") AS Jam, ps.status,ps.tingkatstatus,ps.keterangan  FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND (date_add(ps.tanggaljam, INTERVAL 1 DAYS), "%m-%d-%Y") = (NOW(), "%m-%d-%Y") ORDER BY ps.tanggaljam DESC';
+			$query = 'SELECT ip.item AS item, (ps.tanggaljam, "hh:mi:ss") AS Jam, ps.status,ps.tingkatstatus,ps.keterangan  FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE ps.idkaryawan = ' . $this->session->userdata("userid") . ' AND (date_add(ps.tanggaljam, INTERVAL 1 DAYS), "m-d-Y") = (NOW(), "m-d-Y") ORDER BY ps.tanggaljam DESC';
 		} elseif ($temp == 3) {
 			$query = 'SELECT ip.Item AS Item, (ps.TanggalJam, "%H:%i:%s") AS Jam, ps.Status,ps.TingkatStatus, ps.Keterangan,ps.TanggalJam FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.IdItem = ip.IdItem WHERE ps.IdKaryawan = ' . $this->session->userdata("userid") . ' AND ps.IdItem =  1  AND (ps.TanggalJam, "%m-%d-%Y") = (NOW(), "%m-%d-%Y") ORDER BY ps.TanggalJam DESC';
 		} elseif ($temp == 4) {
