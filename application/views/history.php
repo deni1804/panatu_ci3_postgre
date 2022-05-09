@@ -114,7 +114,7 @@
 									echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
-									<td>" . $row['COUNT(*)'] . "</td>
+									<td>" . $row['count'] . "</td>
 									</tr>";
 									$no++;
 								}
