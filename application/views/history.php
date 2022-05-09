@@ -113,7 +113,7 @@
 								foreach ($karyawan as $row) {
 									echo "<tr>
 									<td >" . $no . "</td>
-									<td>" . $row['Username'] . "</td>
+									<td>" . $row['username'] . "</td>
 									<td>" . $row['COUNT(*)'] . "</td>
 									</tr>";
 									$no++;

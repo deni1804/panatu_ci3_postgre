@@ -42,7 +42,7 @@
 
 									<div class="text-center">
 
-										<h1 class="h4 fw-bold text-black-900 mb-4">LOGIN</h1>
+										<h1 class="h4 fw-bold text-black-900 mb-4">Login</h1>
 									</div>
 									<?= form_open('login'); ?>
 									<form class="user">
