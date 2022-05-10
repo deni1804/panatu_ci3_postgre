@@ -14,14 +14,16 @@
 	<script type="text/javascript" src="<?php echo base_url('assets/chart/js/canvasjs.min.js'); ?>"></script>
 
 	<!-- bawaan -->
+	<!-- 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('themes/skins/tango/skin1.css'); ?>" />
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('themes/skins/tango/skin.css'); ?>" />
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url('themes/skins/ie7/skin.css'); ?>" />
+	<link rel="stylesheet" type="text/css" href="<?php echo base_url('themes/skins/ie7/skin.css'); ?>" /> -->
 	<!--<link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>themes/lib/jquery-ui-timepicker-addon.css" />
 	<script type="text/javascript" href="<?php echo base_url(); ?>themes/lib/jquery-ui-timepicker-addon.js"> </script>-->
 	<!--<script type="text/javascript" src="<?php echo base_url('themes/lib/js/jquery-1.7.1.min.js'); ?>"></script>-->
+	<!-- 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('themes/lib/css/smoothness/jquery-ui-1.8.18.custom.css'); ?>">
-
+-->
 	<!-- Custom fonts for this template-->
 
 	<link href="<?= base_url('assets/vendor/fontawesome-free/css/all.min.css') ?>" rel="stylesheet" type="text/css">
