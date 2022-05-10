@@ -134,38 +134,7 @@
                     }]
                 });
                 chart2.render();
-                /* 
 
-                 var chart3 = new CanvasJS.Chart("chartsejam", {
-                     exportEnabled: true,
-                     colorSet: "greenShades",
-                     animationEnabled: true,
-                     title: {
-                         text: "Data Monitoring"
-                     },
-                     axisX: {
-
-                         margin: 30
-                     },
-                     axisY: {
-                         title: "Presentase Status",
-                         suffix: "%",
-
-                     },
-                     data: [{
-                         type: "column",
-                         yValueFormatString: "#,##0\"%\"",
-                         indexLabelFontSize: 16,
-
-
-
-                         dataPoints: <?php //echo json_encode($dataperjam, JSON_NUMERIC_CHECK); 
-                                        ?>
-
-                     }]
-                 });
-                 */
-                //chart3.render();
 
                 var chart4 = new CanvasJS.Chart("chartportdata", {
                     exportEnabled: true,
