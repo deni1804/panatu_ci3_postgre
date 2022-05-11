@@ -134,7 +134,38 @@
                     }]
                 });
                 chart2.render();
+                /* 
 
+                 var chart3 = new CanvasJS.Chart("chartsejam", {
+                     exportEnabled: true,
+                     colorSet: "greenShades",
+                     animationEnabled: true,
+                     title: {
+                         text: "Data Monitoring"
+                     },
+                     axisX: {
+
+                         margin: 30
+                     },
+                     axisY: {
+                         title: "Presentase Status",
+                         suffix: "%",
+
+                     },
+                     data: [{
+                         type: "column",
+                         yValueFormatString: "#,##0\"%\"",
+                         indexLabelFontSize: 16,
+
+
+
+                         dataPoints: <?php //echo json_encode($dataperjam, JSON_NUMERIC_CHECK); 
+                                        ?>
+
+                     }]
+                 });
+                 */
+                //chart3.render();
 
                 var chart4 = new CanvasJS.Chart("chartportdata", {
                     exportEnabled: true,
@@ -312,7 +343,7 @@
                 <div class="card-body">
                     <div class="chart-area">
 
-                        <div id="chartsekarang" style="height: 300px; width: 100%;"></div>
+                        <div id="chartsekarang" class="w-100 h-100"></div>
                     </div>
                 </div>
             </div>
@@ -330,7 +361,7 @@
                 <div class="card-body">
                     <div class="chart-area">
 
-                        <div id="chartkemarin" style="height: 300px; width: 100%;"></div>
+                        <div id="chartkemarin" class="w-100 h-100"></div>
                     </div>
 
 
@@ -350,7 +381,7 @@
                 <div class="card-body">
                     <div class="chart-area">
 
-                        <div id="chartportdata" style="height: 300px; width: 100%;"></div>
+                        <div id="chartportdata" class="w-100 h-100"></div>
                     </div>
 
 
@@ -370,7 +401,7 @@
                 <div class="card-body">
                     <div class="chart-area">
 
-                        <div id="chartaissat" style="height: 300px; width: 100%;"></div>
+                        <div id="chartaissat" class="w-100 h-100"></div>
                     </div>
 
 
@@ -390,7 +421,7 @@
                 <div class="card-body">
                     <div class="chart-area">
 
-                        <div id="chartm2prime" style="height: 300px; width: 100%;"></div>
+                        <div id="chartm2prime" class="w-100 h-100"></div>
                     </div>
 
 
@@ -410,7 +441,7 @@
                 <div class="card-body">
                     <div class="chart-area">
 
-                        <div id="chartmrtg" style="height: 300px; width: 100%;"></div>
+                        <div id="chartmrtg" class="w-100 h-100"></div>
                     </div>
 
 
@@ -430,7 +461,7 @@
                 <div class="card-body">
                     <div class="chart-area">
 
-                        <div id="chartweb" style="height: 300px; width: 100%;"></div>
+                        <div id="chartweb" class="w-100 h-100"></div>
                     </div>
 
 
