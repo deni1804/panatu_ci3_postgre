@@ -43,7 +43,28 @@
                                                 <a href="<?php echo site_url() . 'history/view_edititem/' . $row['iditem']; ?>" class="btn btn-success btn-sm">Edit</a>
                                                 <br>
                                                 <br>
-                                                <a href="<?php echo site_url() . 'history/delete_item/' . $row['iditem']; ?>" class="btn btn-danger btn-sm">Delete</a>
+
+                                                <a href="#" data-toggle="modal" data-target="#deletemodal" class="btn btn-danger btn-sm">Delete</a>
+
+                                                <!-- delete modal-->
+                                                <div class="modal fade" id="deletemodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                    <div class="modal-dialog" role="document">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">Are you sure to delete this item?</h5>
+                                                                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                                                    <span aria-hidden="true">×</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">Select "Delete" to remove.</div>
+                                                            <div class="modal-footer">
+                                                                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                                                                <a class="btn btn-danger" href="<?php echo site_url() . 'history/delete_item/' . $row['iditem']; ?>">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
                                             </td>
                                         </tr>
 
