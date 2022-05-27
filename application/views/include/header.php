@@ -13,6 +13,11 @@
 	<!-- canvasjs chart-->
 	<script type="text/javascript" src="<?php echo base_url('assets/chart/js/canvasjs.min.js'); ?>"></script>
 
+	<!--alert js -->
+	<script type="text/javascript" src="<?php echo base_url('assets/dist/sweetalert-dev.js'); ?>"></script>
+	<script type="text/javascript" src="<?php echo base_url('assets/dist/sweetalert.min.js'); ?>"></script>
+	<link href="<?= base_url('assets/dist/sweetalert.css') ?>" rel="stylesheet">
+
 	<!-- bawaan -->
 	<!-- 
 	<link rel="stylesheet" type="text/css" href="<?php echo base_url('themes/skins/tango/skin1.css'); ?>" />
@@ -71,6 +76,7 @@
 
 		};
 	</script>
+
 
 
 </head>

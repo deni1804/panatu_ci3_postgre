@@ -130,10 +130,12 @@ class History extends CI_Controller
 
 
 
-	public function delete_item($row)
+	public function delete_item()
 	{
 		if ($this->session->userdata("username") != "") {
+			$row = $this->input->post('iditem');
 			$this->dbpantau->delete_item($row);
+
 			redirect('history/item');
 		} else {
 			redirect('/login/', 'location');
