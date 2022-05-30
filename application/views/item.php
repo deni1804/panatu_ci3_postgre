@@ -33,7 +33,7 @@
 
                                     ); ?>
                                     <?php foreach ($item as $row) { ?>
-                                        <tr id="delete">
+                                        <tr id="delete" class="<?= $row['iditem'] ?>">
                                             <th scope="row"><?= $i; ?></th>
                                             <td><?= $row['iditem']; ?></td>
                                             <td><?= $row['item']; ?></td>
@@ -42,8 +42,10 @@
                                             <td>
                                                 <a href="<?php echo site_url() . 'history/view_edititem/' . $row['iditem']; ?>" class="btn btn-success btn-sm">Edit</a>
                                                 <br>
-                                                <a onclick="deleteitem(<?php echo $row['iditem'] ?>)" href="#" data-toggle="tooltip" data-placement="bottom" title="Hapus Item" class="btn btn-sm btn-danger">Delete</a>
-
+                                                <button class="delete" data-id="<?= $row['iditem'] ?>">
+                                                    Delete
+                                                </button>
+                                                <!-- <a onclick="deleteitem(<?php echo $row['iditem'] ?>)" href="#" data-toggle="tooltip" data-placement="bottom" title="Hapus Item" class="btn btn-sm btn-danger">Delete</a> -->
 
                                             </td>
                                         </tr>
@@ -69,32 +71,35 @@
 </div>
 
 <script>
-    function deleteitem(iditem) {
+    $(document).on("click.ev", ".delete", function(e) {
+        e.preventDefault();
+        var id = $(this).attr('data-id');
         swal({
-                title: "Anda Yakin ?",
-                text: "Data <?php echo $row['iditem']; ?> Akan Dihapus Secara Permanen",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonText: "Yes, delete it !",
-                closeOnConfirm: false
-            },
-            function() {
-                $.ajax({
-                    url: "<?php echo site_url('history/delete_item/') ?>",
-                    type: "post",
-                    data: {
-                        iditem: iditem
-                    },
-                    success: function() {
-                        swal('Data Berhasil Di Hapus', '', 'success');
-                        $("#delete").fadeTo("slow", 0.7, function() {
-                            $(this).remove();
-                        })
-                    },
-                    error: function() {
-                        swal('data gagal di hapus', 'error');
-                    }
-                });
-            });
-    }
+            title: "Anda Yakin ?",
+            text: "Data ini akan Dihapus Secara Permanen",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Yes, delete it !",
+            closeOnConfirm: false
+        }, function() {
+            $.ajax({
+                url: "<?= base_url('history/delete_item/') ?>",
+                type: "post",
+                data: {
+                    iditem: id
+                },
+                success: function() {
+                    swal('Data Berhasil Di Hapus', '', 'success');
+                    $("#delete").fadeTo("slow", 0.7, function() {
+                        $("." + id).remove();
+                    })
+
+                },
+                error: function() {
+                    swal('data gagal di hapus', 'error');
+
+                }
+            })
+        })
+    });
 </script>
