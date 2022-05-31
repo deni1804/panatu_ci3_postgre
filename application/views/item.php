@@ -17,7 +17,7 @@
                                 <thead>
                                     <tr>
                                         <th>No</th>
-                                        <th>Id Item</th>
+                                        <!-- <th>Id Item</th> -->
                                         <th>Item</th>
                                         <th>Status</th>
                                         <th>Description</th>
@@ -35,14 +35,15 @@
                                     <?php foreach ($item as $row) { ?>
                                         <tr id="delete" class="<?= $row['iditem'] ?>">
                                             <th scope="row"><?= $i; ?></th>
-                                            <td><?= $row['iditem']; ?></td>
+                                            <!-- <td><?= $row['iditem']; ?></td> -->
                                             <td><?= $row['item']; ?></td>
                                             <td><?= $status[$row['idstatus']]; ?></td>
                                             <td><?= $row['keterangan']; ?></td>
                                             <td>
                                                 <a href="<?php echo site_url() . 'history/view_edititem/' . $row['iditem']; ?>" class="btn btn-success btn-sm">Edit</a>
                                                 <br>
-                                                <button class="delete" data-id="<?= $row['iditem'] ?>">
+                                                <br>
+                                                <button class="delete btn btn-sm btn-danger" data-id="<?= $row['iditem'] ?>">
                                                     Delete
                                                 </button>
                                                 <!-- <a onclick="deleteitem(<?php echo $row['iditem'] ?>)" href="#" data-toggle="tooltip" data-placement="bottom" title="Hapus Item" class="btn btn-sm btn-danger">Delete</a> -->
@@ -102,4 +103,38 @@
             })
         })
     });
+
+    /*
+        function deleteitem(iditem) {
+            swal({
+                    title: "Anda Yakin?",
+                    text: "Data <?php echo $row['iditem']; ?> Akan Dihapus Secara Permanen!",
+                    type: "warning",
+                    showCancelButton: true,
+                    // confirmButtonColor: "#DD6B55",
+                    confirmButtonText: "Yes, delete it!",
+                    closeOnConfirm: false
+                },
+                function() {
+                    $.ajax({
+                        url: "<?php echo base_url('history/delete_item/') ?>",
+                        type: "post",
+                        data: {
+                            iditem: iditem
+                        },
+                        success: function() {
+                            swal('Data Berhasil Di Hapus', ' ', 'success');
+                            $("#delete").fadeTo("slow", 0.7, function() {
+                                $(this).remove();
+                            })
+
+                        },
+                        error: function() {
+                            swal('data gagal di hapus', 'error');
+                        }
+                    });
+
+                });
+        }
+        */
 </script>

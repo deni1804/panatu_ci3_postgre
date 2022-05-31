@@ -51,7 +51,7 @@ class History extends CI_Controller
 	public function add_item()
 	{
 		if ($this->session->userdata("username") != "") {
-			$this->form_validation->set_rules('iditem', 'Iditem', 'required|trim|is_unique[ps_itempantauan.iditem]');
+			//$this->form_validation->set_rules('iditem', 'Iditem', 'required|trim|is_unique[ps_itempantauan.iditem]');
 			$this->form_validation->set_rules('itemname', 'Itemname', 'required|trim|is_unique[ps_itempantauan.item]');
 			$this->form_validation->set_rules('keterangan', 'Keterangan', 'required|trim');
 
@@ -62,10 +62,10 @@ class History extends CI_Controller
 				$this->load->view('include/footer');
 			} else {
 				$data = [
-					'iditem' => $this->input->post('iditem'),
+					//'iditem' => $this->input->post('iditem'),
 					'item' => htmlspecialchars($this->input->post('itemname', true)),
 					'idstatus' => $this->input->post('idstatus'),
-					'sort' => $this->input->post('iditem'),
+					//	'sort' => $this->input->post('iditem'),
 					'keterangan' => $this->input->post('keterangan'),
 					//'IdKaryawan' => $this->input->post('idkaryawan')
 
@@ -113,7 +113,7 @@ class History extends CI_Controller
 					'iditem' => $this->input->post('iditem'),
 					'item' => htmlspecialchars($this->input->post('itemname', true)),
 					'idstatus' => $this->input->post('idstatus'),
-					'sort' => $this->input->post('iditem'),
+					//'sort' => $this->input->post('iditem'),
 					'keterangan' => $this->input->post('keterangan')
 
 

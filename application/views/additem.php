@@ -12,10 +12,10 @@
                         </div>
                         <?= $this->session->flashdata('message'); ?>
                         <form class="user" method="POST" action="<?= base_url('history/add_item'); ?>">
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <input type="text" class="form-control" id="iditem" name="iditem" placeholder="ID Item" value="<?= set_value('iditem'); ?>">
                                 <?= form_error('iditem', '<small class="text-danger">', '</small>'); ?>
-                            </div>
+                            </div> -->
 
                             <div class="form-group">
                                 <input type="text" class="form-control" id="itemname" name="itemname" placeholder="Item Name" value="<?= set_value('itemname'); ?>">
