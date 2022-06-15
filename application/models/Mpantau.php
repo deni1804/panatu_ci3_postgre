@@ -99,6 +99,8 @@ class Mpantau extends CI_Model
 			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW(), 'mm-dd-yyyy') GROUP BY kh.username , ip.item";
 		} elseif ($list == 2) {
 			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND  (ps.tanggaljam::date = current_date-1)  GROUP BY kh.username , ip.item";
+		} elseif ($list == 3) {
+			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND  (ps.tanggaljam::date = current_date-30)  GROUP BY kh.username , ip.item";
 		}
 
 

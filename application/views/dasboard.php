@@ -328,6 +328,7 @@
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Daily Report</a>
                                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday's Report</a>
+                                    <a class="nav-item nav-link" id="nav-month-tab" data-toggle="tab" href="#month" role="tab" aria-controls="nav-profile" aria-selected="false">Monthly Report</a>
                                 </div>
                             </nav>
                         </ul>
@@ -372,6 +373,31 @@
                                         <?php
                                         $no = 1;
                                         foreach ($yesterday as $row) {
+                                            echo "<tr>
+									<td >" . $no . "</td>
+									<td>" . $row['username'] . "</td>
+									<td>" . $row['count'] . "</td>
+									</tr>";
+                                            $no++;
+                                        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade show active" id="month" role="tabpanel" aria-labelledby="nav-month-tab">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Report</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($bulanan as $row) {
                                             echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
