@@ -319,70 +319,80 @@
 
             }
         </script>
-
-        <!--
         <div class="col-xl-12 col-lg-7">
-
-            Area Chart
             <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Hourly Chart</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-
-                        <div id="chartsejam" style="height: 300px; width: 100%;"></div>
+                <div class="card text-center">
+                    <div class="card-header">
+                        <ul class="nav nav-tabs card-header-tabs">
+                            <nav>
+                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Daily Report</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday's Report</a>
+                                </div>
+                            </nav>
+                        </ul>
                     </div>
-                </div>
-            </div>
-        </div>
- -->
-
-
-
-
-        <div class="col-xl-12 col-lg-7">
-
-            <!-- Area Chart -->
-            <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Daily Report</h6>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>No</th>
-                                    <th>Nama</th>
-                                    <th>Report</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <?php
-                                $no = 1;
-                                foreach ($harian as $row) {
-                                    echo "<tr>
+                    <div class="card-body">
+                        <div class="tab-content" id="nav-tabContent">
+                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Report</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($harian as $row) {
+                                            echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
 									<td>" . $row['count'] . "</td>
 									</tr>";
-                                    $no++;
-                                }
+                                            $no++;
+                                        }
 
-                                ?>
-                            </tbody>
-                        </table>
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Report</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($yesterday as $row) {
+                                            echo "<tr>
+									<td >" . $no . "</td>
+									<td>" . $row['username'] . "</td>
+									<td>" . $row['count'] . "</td>
+									</tr>";
+                                            $no++;
+                                        }
 
+                                        ?>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-
-
                 </div>
             </div>
-
-
-
         </div>
+
+
+
+
 
 
         <!--
