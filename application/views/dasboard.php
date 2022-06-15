@@ -321,14 +321,15 @@
         </script>
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
+
                 <div class="card text-center">
                     <div class="card-header">
                         <ul class="nav nav-tabs card-header-tabs">
                             <nav>
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Daily Report</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday's Report</a>
-                                    <a class="nav-item nav-link" id="nav-month-tab" data-toggle="tab" href="#month" role="tab" aria-controls="nav-profile" aria-selected="false">Monthly Report</a>
+                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday Report</a>
+                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Monthly Report</a>
                                 </div>
                             </nav>
                         </ul>
@@ -359,6 +360,7 @@
                                         ?>
                                     </tbody>
                                 </table>
+
                             </div>
                             <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
@@ -384,8 +386,9 @@
                                         ?>
                                     </tbody>
                                 </table>
+
                             </div>
-                            <div class="tab-pane fade show active" id="month" role="tabpanel" aria-labelledby="nav-month-tab">
+                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
@@ -409,12 +412,15 @@
                                         ?>
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
+
 
 
 
