@@ -8,59 +8,39 @@
         foreach ($portdata as $key => $value) {
             $datachart[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
-        //print_r(json_encode($datachart, JSON_NUMERIC_CHECK));
-        //echo "</br>";
-        ?>
-        <?php
+
         foreach ($aissat as $key => $value) {
             $aissatapp[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
-        //print_r(json_encode($aissatapp, JSON_NUMERIC_CHECK));
-        //echo "</br>";
-        ?>
-        <?php
+
         foreach ($m2prime as $key => $value) {
             $m2p[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
-        //print_r(json_encode($m2p, JSON_NUMERIC_CHECK));
-        //echo "</br>";
-        ?>
-        <?php
+
         foreach ($mrtg as $key => $value) {
             $mg[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
-        //print_r(json_encode($mg, JSON_NUMERIC_CHECK));
-        //echo "</br>";
-        ?>
-        <?php
+
         foreach ($web as $key => $value) {
             $wb[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
         //print_r(json_encode($wb, JSON_NUMERIC_CHECK));
         //echo "</br>";
-        ?>
-        <?php
-        // foreach ($pantau as $key) {
-        //  $dataperjam[] = ['label' => $key['Item'], 'y' => $key['TingkatStatus']];
-        // };
-        // print_r($dataperjam = json_encode($dataperjam, JSON_NUMERIC_CHECK));
-        //die();
-        ?>
 
-        <?php
 
         foreach ($sekarang as $key => $value) {
 
             $dataPoints[] = ['label' => $value['item'], 'y' => $value['tingkatstatus']];
         };
-        //echo "</br>";
-        //print_r(json_encode($dataPoints, JSON_NUMERIC_CHECK));
-        //die();
-        ?>
-        <?php
+
         foreach ($kemaren as $key => $value) {
 
             $dataais[] = ['label' => $value['item'], 'y' => $value['tingkatstatus']];
+        };
+
+        foreach ($gps as $key => $value) {
+
+            $comuter[] = ['label' => $value['item'], 'y' => $value['tingkatstatus']];
         };
 
         //print_r(json_encode($dataais, JSON_NUMERIC_CHECK));
@@ -75,7 +55,8 @@
                         "#51cda0",
                         "#df7970",
                         "#ae7d99",
-                        "#c9d45c"
+                        "#c9d45c",
+                        "#FFE4C4"
                     ]
 
                 );
@@ -135,7 +116,6 @@
                 });
                 chart2.render();
                 /* 
-
                  var chart3 = new CanvasJS.Chart("chartsejam", {
                      exportEnabled: true,
                      colorSet: "greenShades",
@@ -144,24 +124,18 @@
                          text: "Data Monitoring"
                      },
                      axisX: {
-
                          margin: 30
                      },
                      axisY: {
                          title: "Presentase Status",
                          suffix: "%",
-
                      },
                      data: [{
                          type: "column",
                          yValueFormatString: "#,##0\"%\"",
                          indexLabelFontSize: 16,
-
-
-
                          dataPoints: <?php //echo json_encode($dataperjam, JSON_NUMERIC_CHECK); 
                                         ?>
-
                      }]
                  });
                  */
@@ -258,7 +232,7 @@
                     exportEnabled: true,
                     animationEnabled: true,
                     title: {
-                        text: "MRTG"
+                        text: "SERVER"
                     },
                     axisX: {
 
@@ -313,6 +287,36 @@
 
                 chart8.render();
 
+                var chart9 = new CanvasJS.Chart("chartgps", {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "GPS Anouncer"
+                    },
+                    axisX: {
+
+                        margin: 30
+                    },
+                    axisY: {
+                        title: "Presentase Status",
+                        suffix: "%",
+
+                    },
+                    data: [{
+                        color: "#FFE4C4",
+                        type: "spline",
+                        yValueFormatString: "#,##0\"%\"",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+
+
+
+                        dataPoints: <?php echo json_encode($comuter, JSON_NUMERIC_CHECK); ?>
+                    }]
+                });
+
+                chart9.render();
+
             }
         </script>
 
@@ -333,6 +337,100 @@
             </div>
         </div>
  -->
+
+
+
+
+        <div class="col-xl-12 col-lg-7">
+
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Daily Report</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Report</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                $no = 1;
+                                foreach ($harian as $row) {
+                                    echo "<tr>
+									<td >" . $no . "</td>
+									<td>" . $row['username'] . "</td>
+									<td>" . $row['count'] . "</td>
+									</tr>";
+                                    $no++;
+                                }
+
+                                ?>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+
+        <!--
+        <div class="col-xl-6 col-lg-7">
+
+            Area Chart 
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Monthly Report</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+                        <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>No</th>
+                                    <th>Nama</th>
+                                    <th>Report</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                /*
+                                $no = 1;
+                                foreach ($bulanan as $row) {
+                                    echo "<tr>
+									<td >" . $no . "</td>
+									<td>" . $row['username'] . "</td>
+									<td>" . $row['count'] . "</td>
+									</tr>";
+                                    $no++;
+                                }
+*/
+                                ?>
+                            </tbody>
+                        </table>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+
+                            -->
         <div class="col-xl-6 col-lg-7">
 
             <!-- Area Chart -->
@@ -462,6 +560,26 @@
                     <div class="chart-area">
 
                         <div id="chartweb" class="w-100 h-100"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-xl-6 col-lg-7">
+
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">GPS Anouncer Chart</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+
+                        <div id="chartgps" class="w-100 h-100"></div>
                     </div>
 
 
