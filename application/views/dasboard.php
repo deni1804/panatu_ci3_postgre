@@ -40,7 +40,7 @@
 
         foreach ($gps as $key => $value) {
 
-            $comuter[] = ['label' => $value['item'], 'y' => $value['tingkatstatus']];
+            $comuter[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
 
         //print_r(json_encode($dataais, JSON_NUMERIC_CHECK));
