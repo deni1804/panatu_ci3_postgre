@@ -34,6 +34,28 @@ class Mpantau extends CI_Model
 		$this->db->WHERE('iditem', $this->input->post('iditem'));
 	}
 
+	function get_historykaryawan()
+	{
+		//return $this->db->get_where('kh_karyawan', ['idkaryawan' => $row])->row_array();]
+		$idkaryawan = $this->uri->segment(3);
+		$query = "SELECT idkaryawan ,namalengkap 
+		FROM public.kh_karyawan   
+		where idkaryawan = $idkaryawan
+		ORDER BY idkaryawan ASC ";
+		return $this->db->query($query);
+	}
+
+	function get_historyall()
+	{
+
+		$idkaryawan = $this->uri->segment(3);
+		$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
+		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
+		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam DESC";
+
+		return $this->db->query($query);
+	}
+
 
 
 	function get_pantau()
@@ -65,6 +87,8 @@ class Mpantau extends CI_Model
 		return $this->db->query($query);
 	}
 
+
+
 	function get_dasboard($temp)
 	{
 
@@ -95,14 +119,12 @@ class Mpantau extends CI_Model
 	function get_karyawan($list)
 	{
 		if ($list == 1) {
-
-			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW(), 'mm-dd-yyyy') GROUP BY kh.username , ip.item";
+			$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW(), 'mm-dd-yyyy') GROUP BY kh.username , ip.item, kh.idkaryawan";
 		} elseif ($list == 2) {
 			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND  (ps.tanggaljam::date = current_date-1)  GROUP BY kh.username , ip.item";
 		} elseif ($list == 3) {
 			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND  (ps.tanggaljam::date = current_date-7)  GROUP BY kh.username , ip.item";
 		}
-
 
 		return $this->db->query($query);
 	}

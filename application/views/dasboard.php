@@ -345,16 +345,19 @@
                                             <th>No</th>
                                             <th>Nama</th>
                                             <th>Report</th>
+                                            <th>History</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
                                         foreach ($harian as $row) {
-                                            echo "<tr>
+                                            echo "<tr >
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
 									<td>" . $row['count'] . "</td>
+                                    <td><a href='" . site_url() . "history/history_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
+
 									</tr>";
                                             $no++;
                                         }

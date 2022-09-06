@@ -8,6 +8,8 @@ class History extends CI_Controller
 		parent::__construct();
 		$this->load->model('Mpantau', 'dbpantau', TRUE);
 		$this->load->helper('date');
+		$this->load->library('session');
+		$this->load->helper('url');
 	}
 
 	public function index()
@@ -23,6 +25,30 @@ class History extends CI_Controller
 			redirect('/login/', 'location');
 		}
 	}
+
+	public function history_karyawan()
+	{
+		//$data['idkaryawan'] = $this->dbpantau->get_historykaryawan($row);
+		//$idkaryawan = $this->uri->segment(3);
+		//$historyall = $this->dbpantau->get_historyall($idkaryawan)->result_array();
+		//$this->session->set_userkaryawan('idkaryawan', $idkaryawan);
+		$historyall = $this->dbpantau->get_historyall()->result_array();
+		$idkaryawan = $this->dbpantau->get_historykaryawan()->result_array();
+		if ($this->session->userdata("username") != "") {
+			$this->load->view('include/header');
+			$this->load->view('history_karyawan', array('historyall' => $historyall, 'idkaryawan' => $idkaryawan));
+			$this->load->view('include/footer');
+		} else {
+			redirect('/login/', 'location');
+		}
+
+
+		//$data['idkaryawan'];
+		//$idkaryawan = $_GET['idkaryawan'];
+		//print_r($idkaryawan);
+		//echo $this->uri->segment(3);
+	}
+
 
 	public function item()
 	{
