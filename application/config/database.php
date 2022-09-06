@@ -75,15 +75,17 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
+	/*
 	'hostname' => 'pgsql:host=localhost;dbname=pantau',
-	//'hostname' => 'localhost',
-	//'username' => 'postgres',
-	//'password' => 'deni',
 	'username' => 'monitoring',
 	'password' => 'imaniprima11',
-	'database' => 'pantau',
 	'dbdriver' => 'pdo',
-	//'dbdriver' => 'postgre',
+	*/
+	'hostname' => 'localhost',
+	'username' => 'postgres',
+	'password' => 'deni',
+	'dbdriver' => 'postgre',
+	'database' => 'pantau',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
