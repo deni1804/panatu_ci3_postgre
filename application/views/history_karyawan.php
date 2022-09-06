@@ -30,35 +30,22 @@
 
                                 <tbody>
                                     <?php
-                                    /*
-                                    $idkaryawan['jam'];
-                                    $idkaryawan['item'];
-                                    $idkaryawan['status'];
-                                    $idkaryawan['keterangan'];
 
-                                    
+
                                     $status = array(
                                         '1' => 'OK',
                                         '2' => 'Cukup Baik',
                                         '3' => 'Kurang Baik',
                                         '4' => 'Trouble',
                                     );
-                                    
-                                    foreach ($historyall as $row) {
-                                        echo "<tr>
-									<td>" . $row['tanggaljam'] . "</td>
-									<td>" . $row['iditem'] . "</td>
-									<td >" . $status[$row['status']] . "</td>
-									<td >" . $row['keterangan'] .  "</td>
-									</tr>";
-                                    }
-                                    */
+
+
                                     foreach ($historyall as $row) {
                                         echo "<tr>
                                     <td>" . $row['tanggal'] . "</td>
 									<td>" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
-									<td >" . $row['status'] . "</td>
+									<td >" . $status[$row['status']]  . "</td>
 									<td >" . $row['keterangan'] .  "</td>
 									</tr>";
                                     }
