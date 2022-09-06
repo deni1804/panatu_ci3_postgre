@@ -19,7 +19,7 @@ class History extends CI_Controller
 			$sekarang = $this->dbpantau->get_history(1)->result_array();
 			$karyawan = $this->dbpantau->get_karyawan(1)->result_array();
 			$this->load->view('include/header');
-			$this->load->view('history', array('kemaren' => $kemaren, 'sekarang' => $sekarang, 'karyawan' => $karyawan));
+			$this->load->view('history', array('kemaren' => $kemaren, 'sekarang' => $sekarang, 'karyawan' => $karyawan,));
 			$this->load->view('include/footer');
 		} else {
 			redirect('/login/', 'location');
@@ -28,10 +28,6 @@ class History extends CI_Controller
 
 	public function history_karyawan()
 	{
-		//$data['idkaryawan'] = $this->dbpantau->get_historykaryawan($row);
-		//$idkaryawan = $this->uri->segment(3);
-		//$historyall = $this->dbpantau->get_historyall($idkaryawan)->result_array();
-		//$this->session->set_userkaryawan('idkaryawan', $idkaryawan);
 		$historyall = $this->dbpantau->get_historyall()->result_array();
 		$idkaryawan = $this->dbpantau->get_historykaryawan()->result_array();
 		if ($this->session->userdata("username") != "") {
@@ -41,12 +37,6 @@ class History extends CI_Controller
 		} else {
 			redirect('/login/', 'location');
 		}
-
-
-		//$data['idkaryawan'];
-		//$idkaryawan = $_GET['idkaryawan'];
-		//print_r($idkaryawan);
-		//echo $this->uri->segment(3);
 	}
 
 

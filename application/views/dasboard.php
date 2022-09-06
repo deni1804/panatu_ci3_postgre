@@ -329,9 +329,8 @@
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Daily Report</a>
                                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday Report</a>
-                                    <!--  
-                                      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Monthly Report</a>
-        -->
+                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">All Reports</a>
+
                                 </div>
                             </nav>
                         </ul>
@@ -345,7 +344,6 @@
                                             <th>No</th>
                                             <th>Nama</th>
                                             <th>Report</th>
-                                            <th>History</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -356,7 +354,6 @@
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
 									<td>" . $row['count'] . "</td>
-                                    <td><a href='" . site_url() . "history/history_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
 
 									</tr>";
                                             $no++;
@@ -393,24 +390,24 @@
                                 </table>
 
                             </div>
-                            <!--
+
                             <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
                                             <th>No</th>
                                             <th>Nama</th>
-                                            <th>Report</th>
+                                            <th>History All</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $no = 1;
-                                        foreach ($bulanan as $row) {
+                                        foreach ($allrepots as $row) {
                                             echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
-									<td>" . $row['count'] . "</td>
+                                    <td><a href='" . site_url() . "history/history_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
 									</tr>";
                                             $no++;
                                         }
@@ -420,7 +417,7 @@
                                 </table>
 
                             </div>
-                                    -->
+
                         </div>
                     </div>
                 </div>

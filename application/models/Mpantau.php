@@ -123,7 +123,7 @@ class Mpantau extends CI_Model
 		} elseif ($list == 2) {
 			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND  (ps.tanggaljam::date = current_date-1)  GROUP BY kh.username , ip.item";
 		} elseif ($list == 3) {
-			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND  (ps.tanggaljam::date = current_date-7)  GROUP BY kh.username , ip.item";
+			$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  GROUP BY kh.username , ip.item, kh.idkaryawan";
 		}
 
 		return $this->db->query($query);

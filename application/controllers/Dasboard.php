@@ -24,12 +24,12 @@ class Dasboard extends CI_Controller
             $gps = $this->dbpantau->get_dasboard(11)->result_array();
             $harian = $this->dbpantau->get_karyawan(1)->result_array();
             $yesterday = $this->dbpantau->get_karyawan(2)->result_array();
-            $bulanan = $this->dbpantau->get_karyawan(3)->result_array();
+            $allrepots = $this->dbpantau->get_karyawan(3)->result_array();
 
 
 
             $this->load->view('include/header');
-            $this->load->view('dasboard', array('kemaren' => $kemaren, 'sekarang' => $sekarang, 'portdata' => $portdata, 'aissat' => $aissat, 'm2prime' => $m2prime, 'mobileapp' => $mobileapp, 'mrtg' => $mrtg, 'web' => $web, 'harian' => $harian, 'gps' => $gps, 'yesterday' => $yesterday, 'bulanan' => $bulanan));
+            $this->load->view('dasboard', array('kemaren' => $kemaren, 'sekarang' => $sekarang, 'portdata' => $portdata, 'aissat' => $aissat, 'm2prime' => $m2prime, 'mobileapp' => $mobileapp, 'mrtg' => $mrtg, 'web' => $web, 'harian' => $harian, 'gps' => $gps, 'yesterday' => $yesterday, 'allrepots' => $allrepots));
             $this->load->view('include/footer');
         } else {
             redirect('/login/', 'location');
