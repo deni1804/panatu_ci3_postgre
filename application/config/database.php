@@ -76,6 +76,7 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	/*
+	settingan server
 	'hostname' => 'pgsql:host=localhost;dbname=pantau',
 	'username' => 'monitoring',
 	'password' => 'imaniprima11',
