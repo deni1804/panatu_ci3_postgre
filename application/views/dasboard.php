@@ -56,7 +56,7 @@
                         "#df7970",
                         "#ae7d99",
                         "#c9d45c",
-                        "#FFE4C4"
+                        "#FF1493"
                     ]
 
                 );
@@ -303,7 +303,7 @@
 
                     },
                     data: [{
-                        color: "#FFE4C4",
+                        color: "#FF1493",
                         type: "spline",
                         yValueFormatString: "#,##0\"%\"",
                         legendText: "{label}",
