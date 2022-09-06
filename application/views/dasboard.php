@@ -49,13 +49,13 @@
         <script>
             window.onload = function() {
                 CanvasJS.addColorSet("greenShades",
-                    [ //colorSet Array
+                    [ //colorSet Array dasboard
 
-                        "#6d78ad",
-                        "#51cda0",
-                        "#df7970",
-                        "#ae7d99",
-                        "#c9d45c",
+                        "#B8860B",
+                        "#006400",
+                        "#FF8C00",
+                        "#483D8B",
+                        "#00CED1",
                         "#FF1493"
                     ]
 
@@ -157,7 +157,7 @@
 
                     },
                     data: [{
-                        color: "#6d78ad",
+                        color: "#B8860B",
                         type: "spline",
                         yValueFormatString: "#,##0\"%\"",
                         legendText: "{label}",
@@ -186,7 +186,7 @@
 
                     },
                     data: [{
-                        color: "#51cda0",
+                        color: "#006400",
                         type: "spline",
                         yValueFormatString: "#,##0\"%\"",
                         legendText: "{label}",
@@ -215,7 +215,7 @@
 
                     },
                     data: [{
-                        color: "#df7970",
+                        color: "#FF8C00",
                         type: "spline",
                         yValueFormatString: "#,##0\"%\"",
                         legendText: "{label}",
@@ -244,7 +244,7 @@
 
                     },
                     data: [{
-                        color: "#ae7d99",
+                        color: "#483D8B",
                         type: "spline",
                         yValueFormatString: "#,##0\"%\"",
                         legendText: "{label}",
@@ -273,7 +273,7 @@
 
                     },
                     data: [{
-                        color: "#c9d45c",
+                        color: "#00CED1",
                         type: "spline",
                         yValueFormatString: "#,##0\"%\"",
                         legendText: "{label}",
