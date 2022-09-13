@@ -47,14 +47,41 @@ class Mpantau extends CI_Model
 
 	function get_historyall()
 	{
+		$idkaryawan = $this->uri->segment(3);
+
+		if (isset($_POST['caritanggal'])) {
+			$dari_tanggal = $this->input->post('dari_tanggal');
+			$sampai_tanggal = $this->input->post('sampai_tanggal');
+			if ($dari_tanggal != null || $sampai_tanggal != null) {
+				$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
+		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
+		WHERE ps.idkaryawan = $idkaryawan AND ps.tanggaljam BETWEEN '$dari_tanggal' AND  '$sampai_tanggal' ORDER BY ps.tanggaljam DESC";
+			} else {
+				$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
+		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
+		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam DESC";
+			}
+		} else {
+			$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
+		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
+		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam DESC";
+		}
+		return $this->db->query($query);
+	}
+
+	/*
+	function get_historydate($dari_tanggal, $sampai_tanggal)
+	{
 
 		$idkaryawan = $this->uri->segment(3);
 		$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
 		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
-		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam DESC";
+		WHERE ps.idkaryawan = $idkaryawan and  ORDER BY ps.tanggaljam DESC";
 
 		return $this->db->query($query);
 	}
+	*/
+
 
 
 

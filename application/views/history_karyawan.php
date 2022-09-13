@@ -12,6 +12,18 @@
                                                                             }
                                                                             ?>
                     </h6>
+
+                    <?php
+                    $id = $this->uri->segment(3);
+                    echo "<form action='" . site_url() . "history/history_karyawan/" . $id . "' method='POST'>";
+                    ?>
+
+                    <input type="date" name="dari_tanggal" id="dari_tanggal">
+                    <input type="date" name="sampai_tanggal" id="sampai_tanggal">
+                    <button type="submit" class="btn btn-primary btn-sm" name="caritanggal">
+                        Search
+                    </button>
+                    </form>
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">

@@ -38,6 +38,37 @@ class History extends CI_Controller
 			redirect('/login/', 'location');
 		}
 	}
+	/*
+	
+
+	public function history_karyawan()
+	{
+		if ($this->session->userdata("username") != "") {
+			$dari_tanggal = $this->input->post('dari_tanggal');
+			$sampai_tanggal = $this->input->post('sampai_tanggal');
+			$get_historydate = $this->dbpantau->get_historydate($dari_tanggal, $sampai_tanggal)->result_array();
+			$historyall = $this->dbpantau->get_historyall()->result_array();
+			$idkaryawan = $this->dbpantau->get_historykaryawan()->result_array();
+			if (isset($_post['submit'])) {
+
+				$this->load->view('include/header');
+				$this->load->view('history_karyawan', array('get_historydate' => $get_historydate, 'idkaryawan' => $idkaryawan));
+				$this->load->view('include/footer');
+			} else {
+
+
+				$this->load->view('include/header');
+				$this->load->view('history_karyawan', array('historyall' => $historyall, 'idkaryawan' => $idkaryawan));
+				$this->load->view('include/footer');
+			}
+		} else {
+			redirect('/login/', 'location');
+		}
+	}
+
+*/
+
+
 
 
 	public function item()
