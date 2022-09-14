@@ -18,11 +18,21 @@
                     echo "<form action='" . site_url() . "history/history_karyawan/" . $id . "' method='POST'>";
                     ?>
 
-                    <input type="date" name="dari_tanggal" id="dari_tanggal">
-                    <input type="date" name="sampai_tanggal" id="sampai_tanggal">
-                    <button type="submit" class="btn btn-primary btn-sm" name="caritanggal">
-                        Search
-                    </button>
+                    <div class="row">
+                        <div class="col-auto ">
+                            <label for="dari_tanggal" class="text-primary">Start Date</label>
+                            <input type="date" name="dari_tanggal" id="dari_tanggal">
+                        </div>
+                        <div class="col-auto">
+                            <label for="sampai_tanggal" class="text-primary">End Date</label>
+                            <input type="date" name="sampai_tanggal" id="sampai_tanggal">
+                        </div>
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-primary btn-sm" name="caritanggal">
+                                Search
+                            </button>
+                        </div>
+                    </div>
                     </form>
                 </div>
                 <!-- Card Body -->
@@ -32,6 +42,7 @@
                             <table id="data" class="table table-bordered mb-0" style="width:100%">
                                 <thead>
                                     <tr>
+                                        <th>No</th>
                                         <th>Tanggal</th>
                                         <th>Jam</th>
                                         <th>Item</th>
@@ -43,7 +54,7 @@
                                 <tbody>
                                     <?php
 
-
+                                    $i = 1;
                                     $status = array(
                                         '1' => 'OK',
                                         '2' => 'Cukup Baik',
@@ -54,14 +65,17 @@
 
                                     foreach ($historyall as $row) {
                                         echo "<tr>
+                                    <td scope='row'>" . $i . "</td>   
                                     <td>" . $row['tanggal'] . "</td>
 									<td>" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
 									<td >" . $status[$row['status']]  . "</td>
 									<td >" . $row['keterangan'] .  "</td>
 									</tr>";
+                                        $i++;
                                     }
                                     ?>
+
                                 </tbody>
                             </table>
                         </div>

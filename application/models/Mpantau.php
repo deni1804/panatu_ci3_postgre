@@ -59,7 +59,7 @@ class Mpantau extends CI_Model
 			} else {
 				$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
 		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
-		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam DESC";
+		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam, ip.item DESC";
 			}
 		} else {
 			$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
@@ -68,19 +68,6 @@ class Mpantau extends CI_Model
 		}
 		return $this->db->query($query);
 	}
-
-	/*
-	function get_historydate($dari_tanggal, $sampai_tanggal)
-	{
-
-		$idkaryawan = $this->uri->segment(3);
-		$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
-		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
-		WHERE ps.idkaryawan = $idkaryawan and  ORDER BY ps.tanggaljam DESC";
-
-		return $this->db->query($query);
-	}
-	*/
 
 
 
