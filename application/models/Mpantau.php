@@ -55,7 +55,7 @@ class Mpantau extends CI_Model
 			if ($dari_tanggal != null || $sampai_tanggal != null) {
 				$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
 		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
-		WHERE ps.idkaryawan = $idkaryawan AND ps.tanggaljam BETWEEN '$dari_tanggal' AND  '$sampai_tanggal' ORDER BY ps.tanggaljam DESC";
+		WHERE ps.idkaryawan = $idkaryawan AND ps.tanggaljam BETWEEN '$dari_tanggal' AND  date '$sampai_tanggal' + 1 ORDER BY ps.tanggaljam DESC";
 			} else {
 				$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
 		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
