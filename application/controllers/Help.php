@@ -11,9 +11,15 @@ class Help extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata("username") != "") {
-			$this->load->view('include/header');
-			$this->load->view('help');
-			$this->load->view('include/footer');
+			if ($this->session->userdata("userlevel") == 1) {
+				$this->load->view('include/header');
+				$this->load->view('help');
+				$this->load->view('include/footer');
+			} else {
+				$this->load->view('include/header_user');
+				$this->load->view('help');
+				$this->load->view('include/footer');
+			}
 		} else {
 			redirect('/login/', 'location');
 		}

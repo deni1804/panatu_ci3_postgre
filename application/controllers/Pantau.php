@@ -14,6 +14,27 @@ class Pantau extends CI_Controller
 	public function index()
 	{
 		if ($this->session->userdata("username") != "") {
+			if ($this->session->userdata("userlevel") == 1) {
+				$item = $this->dbpantau->get_item()->result_array();
+				$pantau = $this->dbpantau->get_pantau()->result_array();
+				$this->load->view('include/header');
+				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau));
+				$this->load->view('include/footer');
+			} else {
+				$item = $this->dbpantau->get_item()->result_array();
+				$pantau = $this->dbpantau->get_pantau()->result_array();
+				$this->load->view('include/header_user');
+				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau));
+				$this->load->view('include/footer');
+			}
+		} else {
+			redirect('/login/', 'location');
+		}
+	}
+	/*
+	public function user()
+	{
+		if ($this->session->userdata("username") != "") {
 			$item = $this->dbpantau->get_item()->result_array();
 			$pantau = $this->dbpantau->get_pantau()->result_array();
 			$this->load->view('include/header');
@@ -23,6 +44,7 @@ class Pantau extends CI_Controller
 			redirect('/login/', 'location');
 		}
 	}
+	*/
 
 	public function add_all()
 	{
@@ -32,9 +54,15 @@ class Pantau extends CI_Controller
 			$this->form_validation->set_rules('keterangan' . $row["iditem"], 'keterangan ' . $row["item"], 'required|xss_clean|prep_for_form');
 		}
 		if ($this->form_validation->run() == FALSE) {
-			$this->load->view('include/header');
-			$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau));
-			$this->load->view('include/footer');
+			if ($this->session->userdata("userlevel") == 1) {
+				$this->load->view('include/header');
+				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau));
+				$this->load->view('include/footer');
+			} else {
+				$this->load->view('include/header_user');
+				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau));
+				$this->load->view('include/footer');
+			}
 		} else {
 			$query = "INSERT INTO ps_pantauansistem (idkaryawan, iditem, status, tingkatstatus, tanggaljam, keterangan) VALUES ";
 			//$datestring = "Year: %Y Month: %m Day: %d - %h:%i %a";

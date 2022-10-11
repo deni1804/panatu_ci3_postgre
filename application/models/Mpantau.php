@@ -16,7 +16,7 @@ class Mpantau extends CI_Model
 
 	function get_allitem()
 	{
-		$query = "SELECT * FROM ps_itempantauan";
+		$query = "SELECT * FROM ps_itempantauan ORDER BY iditem ASC ";
 		return $this->db->query($query);
 	}
 	function delete_item($row)
@@ -37,12 +37,25 @@ class Mpantau extends CI_Model
 	function get_historykaryawan()
 	{
 		//return $this->db->get_where('kh_karyawan', ['idkaryawan' => $row])->row_array();]
+
 		$idkaryawan = $this->uri->segment(3);
-		$query = "SELECT idkaryawan ,namalengkap 
-		FROM public.kh_karyawan   
-		where idkaryawan = $idkaryawan
-		ORDER BY idkaryawan ASC ";
-		return $this->db->query($query);
+		if ($this->session->userdata("userlevel") == 1) {
+			$query = "SELECT idkaryawan ,namalengkap 
+			FROM public.kh_karyawan   
+			where idkaryawan = $idkaryawan
+			ORDER BY idkaryawan ASC ";
+			return $this->db->query($query);
+		} else {
+			if ($this->session->userdata("userid") == $idkaryawan) {
+				$query = "SELECT idkaryawan ,namalengkap 
+				FROM public.kh_karyawan   
+				where idkaryawan = $idkaryawan
+				ORDER BY idkaryawan ASC ";
+				return $this->db->query($query);
+			} else {
+				redirect('/login/', 'location');
+			}
+		}
 	}
 
 	function get_historyall()
@@ -138,6 +151,8 @@ class Mpantau extends CI_Model
 			$query = "SELECT kh.username AS username, ip.item AS item, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND  (ps.tanggaljam::date = current_date-1)  GROUP BY kh.username , ip.item";
 		} elseif ($list == 3) {
 			$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  GROUP BY kh.username , ip.item, kh.idkaryawan";
+		} elseif ($list == 4) {
+			$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE ps.idkaryawan = " . $this->session->userdata('userid') . "  AND ps.iditem =  1  GROUP BY kh.username , ip.item, kh.idkaryawan";
 		}
 
 		return $this->db->query($query);
@@ -153,5 +168,26 @@ class Mpantau extends CI_Model
 		$query = "SELECT keterangan FROM ps_itempantauan WHERE iditem = '$id' ";
 		return $this->db->query($query);
 		// return $query;
+	}
+
+	function get_allkaryawan()
+	{
+		$query = "SELECT * FROM kh_karyawan ORDER BY idkaryawan DESC";
+		return $this->db->query($query);
+	}
+
+	function delete_karyawan($row)
+	{
+		$this->db->delete('kh_karyawan', array('idkaryawan' => $row));
+	}
+
+	function get_idkaryawan($row)
+	{
+		return $this->db->get_where('kh_karyawan', ['idkaryawan' => $row])->row_array();
+	}
+
+	function update_karyawan()
+	{
+		$this->db->WHERE('idkaryawan', $this->input->post('idkaryawan'));
 	}
 }

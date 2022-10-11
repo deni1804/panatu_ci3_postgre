@@ -35,6 +35,7 @@ class Login extends CI_Controller
 					redirect($_GET['req'], 'location');
 				}
 			} else {
+
 				redirect('/pantau/', 'location');
 			}
 		}
@@ -51,50 +52,14 @@ class Login extends CI_Controller
 					'userid' => $row->idkaryawan,
 					'username' => $row->username,
 					'password' => $row->password,
-					'nama' => $row->namalengkap
+					'nama' => $row->namalengkap,
+					'userlevel' => $row->userlevel,
 				)
 			);
 			return TRUE;
 		} else {
 			$this->form_validation->set_message('check_login', 'Invalid Username or Password');
 			return FALSE;
-		}
-	}
-
-	public function registration()
-
-	{
-
-		if ($this->session->userdata("username") != "") {
-			$this->load->library('form_validation');
-			$this->form_validation->set_rules('name', 'Name', 'required|trim');
-			$this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[kh_karyawan.username]');
-			$this->form_validation->set_rules('email', 'Email', 'required|trim|valid_email|is_unique[kh_karyawan.email]');
-			$this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[3]|matches[password2]', ['matches' => 'Password dont match!', 'min_length' => 'Password too short!']);
-			$this->form_validation->set_rules('password2', 'Password', 'required|trim|matches[password1]');
-
-
-			if ($this->form_validation->run() == FALSE) {
-
-				$this->load->view('include/header');
-				$this->load->view('registration');
-				$this->load->view('include/footer');
-			} else {
-				$data = [
-					'username' => htmlspecialchars($this->input->post('username', true)),
-					'password' => md5($this->input->post('password1')),
-					'namalengkap' => $this->input->post('name'),
-					'email' => htmlspecialchars($this->input->post('email', true)),
-					'userlevel' => $this->input->post('userlevel')
-
-
-				];
-
-				$this->db->insert('kh_karyawan', $data);
-				$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created.</div>');
-				redirect('login/registration');
-			}
-		} else {
 		}
 	}
 }

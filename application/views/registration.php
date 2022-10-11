@@ -11,7 +11,7 @@
                             <h1 class="h4 text-gray-900 mb-4">User Registration</h1>
                         </div>
                         <?= $this->session->flashdata('message'); ?>
-                        <form class="user" method="POST" action="<?= base_url('login/registration'); ?>">
+                        <form class="user" method="POST" action="<?= base_url('karyawan/registration'); ?>">
 
                             <div class="form-group">
                                 <input type="text" class="form-control" id="name" name="name" placeholder="Nama Lengkap" value="<?= set_value('name'); ?>">

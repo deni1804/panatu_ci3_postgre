@@ -149,9 +149,6 @@
 				<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Utilities:</h6>
-						<a class="collapse-item fas  fa-th-list" href="<?php echo site_url() . 'history/item'; ?>">&ensp;List Item</a>
-						<a class="collapse-item fas fa-list-alt" href="<?php echo site_url() . 'karyawan/registration'; ?>">&ensp;Registration</a>
-						<a class="collapse-item fas  fa-users" href="<?php echo site_url() . 'karyawan/'; ?>">&ensp;List Karyawan</a>
 						<a class="collapse-item fas fa-exclamation" href="<?php echo site_url() . 'help'; ?>">&emsp;&nbsp;Help</a>
 					</div>
 				</div>
