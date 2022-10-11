@@ -76,19 +76,19 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	/*
-	'hostname' => 'pgsql:host=localhost;dbname=pantau',
-	'username' => 'monitoring',
-	'password' => 'imaniprima11',
-	'dbdriver' => 'pdo',
 	
 	
-
-	*/
 	'hostname' => 'localhost',
 	'username' => 'postgres',
 	'password' => 'deni',
 	'dbdriver' => 'postgre',
 
+
+	*/
+	'hostname' => 'pgsql:host=localhost;dbname=pantau',
+	'username' => 'monitoring',
+	'password' => 'imaniprima11',
+	'dbdriver' => 'pdo',
 
 	'database' => 'pantau',
 	'dbprefix' => '',
