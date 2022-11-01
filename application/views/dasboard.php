@@ -5,7 +5,7 @@
     <div class="row">
         <?php
 
-
+        date("Y-d-m H:i:s");
         foreach ($portdata as $key => $value) {
             $datachart[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
