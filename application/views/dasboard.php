@@ -9,7 +9,7 @@
         foreach ($portdata as $key => $value) {
             $datachart[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
-        //print_r(json_encode($datachart, JSON_NUMERIC_CHECK));
+        print_r(json_encode($datachart, JSON_NUMERIC_CHECK));
 
 
         foreach ($aissat as $key => $value) {
