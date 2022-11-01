@@ -24,7 +24,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 |
 */
 //$config['base_url'] = 'http://localhost/pantau/';
-$config['base_url'] = 'http://192.168.7.31/pantau/';
+$config['base_url'] = 'http://192.168.7.311/pantau/';
 
 
 /*
