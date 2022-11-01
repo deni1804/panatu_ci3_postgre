@@ -77,18 +77,21 @@ $db['default'] = array(
 	'dsn'	=> '',
 	/*
 	
-	
+
+
+
 	'hostname' => 'localhost',
 	'username' => 'postgres',
 	'password' => 'deni',
 	'dbdriver' => 'postgre',
 
-
 	*/
+
 	'hostname' => 'pgsql:host=localhost;dbname=pantau',
 	'username' => 'monitoring',
 	'password' => 'imaniprima11',
 	'dbdriver' => 'pdo',
+
 
 	'database' => 'pantau',
 	'dbprefix' => '',
