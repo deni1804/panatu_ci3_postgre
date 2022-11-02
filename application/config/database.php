@@ -82,15 +82,20 @@ $db['default'] = array(
 	'password' => 'deni',
 	'dbdriver' => 'postgre',
 
-	*/
-
-	'hostname' => 'pgsql:host=localhost;dbname=pantau',
+	
+'hostname' => 'pgsql:host=localhost;dbname=pantau',
 	'username' => 'monitoring',
 	'password' => 'imaniprima11',
 	'dbdriver' => 'pdo',
 
+	*/
 
-	//'database' => 'pantau',
+	'hostname' => 'localhost',
+	'username' => 'monitoring',
+	'password' => 'imaniprima11',
+	'dbdriver' => 'postgre',
+
+	'database' => 'pantau',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
