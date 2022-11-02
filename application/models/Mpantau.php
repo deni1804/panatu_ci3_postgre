@@ -88,6 +88,7 @@ class Mpantau extends CI_Model
 	function get_pantau()
 	{
 		$data = $this->session->userdata('userid');
+
 		$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, ps.status,ps.tingkatstatus
 		FROM ps_pantauansistem ps 
 		INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
