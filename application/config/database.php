@@ -90,7 +90,7 @@ $db['default'] = array(
 	'dbdriver' => 'pdo',
 
 
-	'database' => 'pantau',
+	//'database' => 'pantau',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
 	'db_debug' => (ENVIRONMENT !== 'production'),
