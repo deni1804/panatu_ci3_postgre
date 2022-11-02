@@ -9,8 +9,8 @@
         foreach ($portdata as $key => $value) {
             $datachart[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
-        print_r(json_encode($datachart, JSON_NUMERIC_CHECK));
-        print_r(date("Y-d-m H:i:s"));
+        //print_r(json_encode($datachart, JSON_NUMERIC_CHECK));
+        //print_r(date("Y-d-m H:i:s"));
 
 
         foreach ($aissat as $key => $value) {
