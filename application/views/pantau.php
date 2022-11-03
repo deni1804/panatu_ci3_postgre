@@ -130,6 +130,9 @@
 					<div class="text-center">
 						Hourly Update
 						<div style="margin-top:15px">
+							<code>Jakarta, <?php echo date('d F Y || H:i:s') ?> WIB</code>
+
+
 							Now : <?php
 									date_default_timezone_set("Asia/Jakarta");
 									//echo date("H:i:s"); 
