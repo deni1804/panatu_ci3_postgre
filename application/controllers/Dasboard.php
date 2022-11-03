@@ -1,5 +1,5 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
-
+date_default_timezone_set("Asia/Jakarta");
 class Dasboard extends CI_Controller
 {
 
