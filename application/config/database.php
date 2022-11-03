@@ -76,6 +76,10 @@ $query_builder = TRUE;
 $db['default'] = array(
 	'dsn'	=> '',
 	/*
+	
+
+	'username' => 'postgres',
+	'password' => 'deni',
 
 	'hostname' => 'localhost',
 	'username' => 'postgres',
@@ -89,12 +93,16 @@ $db['default'] = array(
 	'dbdriver' => 'pdo',
 
 	*/
-
 	'hostname' => 'localhost',
+
+
 	'username' => 'monitoring',
 	'password' => 'imaniprima11',
-	'dbdriver' => 'postgre',
 
+
+
+
+	'dbdriver' => 'postgre',
 	'database' => 'pantau',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
