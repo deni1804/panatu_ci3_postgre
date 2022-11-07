@@ -130,7 +130,7 @@
 					<div class="text-center">
 						Hourly Update
 						<div style="margin-top:15px">
-							<code>Jakarta, <?php echo date('Y-m-d || H:i:s') ?> WIB</code>
+
 
 
 							Now : <?php
