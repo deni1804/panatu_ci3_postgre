@@ -47,6 +47,11 @@
             $comuter[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
 
+        foreach ($primasaver as $key => $value) {
+
+            $prima[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
+        };
+
         //print_r(json_encode($dataais, JSON_NUMERIC_CHECK));
         //die();
         ?>
@@ -60,7 +65,8 @@
                         "#FF8C00",
                         "#483D8B",
                         "#00CED1",
-                        "#FF1493"
+                        "#FF1493",
+                        "#800080"
                     ]
 
                 );
@@ -319,7 +325,37 @@
                     }]
                 });
 
-                chart9.render();
+                chart10.render();
+
+                var chart9 = new CanvasJS.Chart("chartprima", {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "Prima Saver"
+                    },
+                    axisX: {
+
+                        margin: 30
+                    },
+                    axisY: {
+                        title: "Presentase Status",
+                        suffix: "%",
+
+                    },
+                    data: [{
+                        color: "#800080",
+                        type: "spline",
+                        yValueFormatString: "#,##0\"%\"",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+
+
+
+                        dataPoints: <?php echo json_encode($prima, JSON_NUMERIC_CHECK); ?>
+                    }]
+                });
+
+                chart10.render();
 
             }
         </script>

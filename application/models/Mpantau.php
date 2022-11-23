@@ -152,6 +152,8 @@ class Mpantau extends CI_Model
 			$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, ps.status,ps.tingkatstatus, ps.keterangan FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE  to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW() AT TIME ZONE 'Asia/Jakarta'+ INTERVAL '-1 day', 'mm-dd-yyyy' )  ORDER BY ps.tanggaljam DESC";
 		} elseif ($temp == 11) {
 			$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, ps.status,ps.tingkatstatus, ps.keterangan,ps.tanggaljam FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE  ps.IdItem =  403 AND to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW()AT TIME ZONE 'Asia/Jakarta', 'mm-dd-yyyy') ORDER BY ps.tanggaljam DESC";
+		} elseif ($temp == 12) {
+			$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, ps.status,ps.tingkatstatus, ps.keterangan,ps.tanggaljam FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem WHERE  ps.IdItem =  7373 AND to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW()AT TIME ZONE 'Asia/Jakarta', 'mm-dd-yyyy') ORDER BY ps.tanggaljam DESC";
 		}
 
 		return $this->db->query($query);
