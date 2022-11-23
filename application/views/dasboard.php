@@ -325,9 +325,9 @@
                     }]
                 });
 
-                chart10.render();
+                chart9.render();
 
-                var chart9 = new CanvasJS.Chart("chartprima", {
+                var chart10 = new CanvasJS.Chart("chartprima", {
                     exportEnabled: true,
                     animationEnabled: true,
                     title: {
@@ -666,6 +666,26 @@
                     <div class="chart-area">
 
                         <div id="chartgps" class="w-100 h-100"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+
+        </div>
+        <div class="col-xl-6 col-lg-7">
+
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Prima Saver Chart</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+
+                        <div id="chartprima" class="w-100 h-100"></div>
                     </div>
 
 
