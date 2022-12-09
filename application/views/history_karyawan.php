@@ -64,12 +64,12 @@
 
 
                                     foreach ($historyall as $row) {
-                                        $pchenter = explode("\r\n", $row['keterangan']);
-                                        $txtoutyesterday = "";
-                                        for ($i = 0; $i <= count($pchenter) - 1; $i++) {
-                                            $pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
-                                            $txtout .= $pchpart;
-                                        }
+                                        //$pchenter = explode("\r\n", $row['keterangan']);
+                                        //$txtoutyesterday = "";
+                                        //for ($i = 0; $i <= count($pchenter) - 1; $i++) {
+                                        //  $pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
+                                        // $txtout .= $pchpart;
+                                        // }
 
                                         echo "<tr>
                                     <td scope='row'>" . $i . "</td>   
@@ -77,7 +77,7 @@
 									<td>" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
 									<td >" . $status[$row['status']]  . "</td>
-									<td >" . $txtout .  "</td>
+									<td >" . $row['keterangan'] .  "</td>
 									</tr>";
                                         $i++;
                                     }
