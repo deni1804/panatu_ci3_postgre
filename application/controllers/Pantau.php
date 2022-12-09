@@ -17,8 +17,9 @@ class Pantau extends CI_Controller
 			if ($this->session->userdata("userlevel") == 1) {
 				$item = $this->dbpantau->get_item()->result_array();
 				$pantau = $this->dbpantau->get_pantau()->result_array();
+				$notes = $this->dbpantau->get_note()->result_array();
 				$this->load->view('include/header');
-				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau));
+				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau, 'notes' => $notes));
 				$this->load->view('include/footer');
 			} else {
 				$item = $this->dbpantau->get_item()->result_array();
@@ -99,6 +100,83 @@ class Pantau extends CI_Controller
 		}
 		//cho $this->input->post("IdItem");
 		//echo $keterangan;
+	}
+
+	public function view_addnote()
+	{
+		if ($this->session->userdata("username") != "") {
+			if ($this->session->userdata("userlevel") == 1) {
+				$this->load->view('include/header');
+				$this->load->view('addnote');
+				$this->load->view('include/footer');
+			} else {
+				$this->load->view('include/header');
+				$this->load->view('addnote');
+				$this->load->view('include/footer');
+			}
+		} else {
+			redirect('/login/', 'location');
+		}
+	}
+
+	public function add_note()
+	{
+		if ($this->session->userdata("username") != "") {
+			if ($this->session->userdata("userlevel") == 1) {
+				$this->form_validation->set_rules('note', 'note', 'required|trim');
+
+				if ($this->form_validation->run() == false) {
+
+					$this->load->view('include/header');
+					$this->load->view('addnote');
+					$this->load->view('include/footer');
+				} else {
+					date_default_timezone_set("Asia/Jakarta");
+					$time = date("Y-m-d G:i:s");
+					$data = [
+						'idkaryawan' => $this->session->userdata('userid'),
+						'note' => $this->input->post('note'),
+						'tanggaljam' => $time,
+						'shift' => $this->input->post('shift'),
+						'userlevel' => $this->session->userdata('userlevel'),
+
+
+
+					];
+
+					$this->db->insert('ps_note', $data);
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created.</div>');
+					redirect('pantau/');
+				}
+			} else {
+				$this->form_validation->set_rules('note', 'note', 'required|trim');
+
+				if ($this->form_validation->run() == false) {
+
+					$this->load->view('include/header');
+					$this->load->view('addnote');
+					$this->load->view('include/footer');
+				} else {
+					date_default_timezone_set("Asia/Jakarta");
+					$time = date("Y-m-d G:i:s");
+					$data = [
+						'idkaryawan' => $this->session->userdata('userid'),
+						'note' => $this->input->post('note'),
+						'tanggaljam' => $time,
+						'shift' => $this->input->post('shift'),
+
+
+
+					];
+
+					$this->db->insert('ps_note', $data);
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created.</div>');
+					redirect('pantau/');
+				}
+			}
+		} else {
+			redirect('/login/', 'location');
+		}
 	}
 }
 

@@ -83,7 +83,16 @@ class Mpantau extends CI_Model
 	}
 
 
+	function get_note()
+	{
+		$query = "SELECT kh.username as username, ps.note ,to_char(ps.tanggaljam, 'mm-dd-yyyy hh24:mi:ss') AS jam, ps.shift, ps.userlevel
+		FROM ps_note ps
+		INNER JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan 
+		ORDER BY ps.tanggaljam DESC";
 
+
+		return $this->db->query($query);
+	}
 
 	function get_pantau()
 	{

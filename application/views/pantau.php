@@ -153,4 +153,73 @@
 		</div>
 	</div>
 
+	<div class="col-xl-12">
+		<div class="card shadow mb-4">
+			<!-- Card Header - Dropdown -->
+			<div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+				<h6 class="m-0 font-weight-bold text-primary">Notes</h6>
+				<a href="<?php echo site_url() . 'pantau/view_addnote'; ?>" class="btn btn-primary btn-sm">Add Note </a>
+			</div>
+			<!-- Card Body -->
+			<div class="card-body">
+				<div class="table-responsive">
+					<div class="table-wrapper-scroll-y my-custom-scrollbar">
+						<table id="data" class="table table table-hover" style="width:100%">
+							<thead>
+								<tr>
+									<th>No</th>
+									<th>Nama</th>
+									<th>User Level</th>
+									<th>Shift</th>
+									<th>Tanggal</th>
+									<th>Notes</th>
+								</tr>
+							</thead>
+
+							<tbody>
+
+								<?php
+								$no = 1;
+								$shift = array(
+									'1' => 'Malam',
+									'2' => 'Pagi',
+									'3' => 'Sore',
+								);
+
+								$userlevel = array(
+									'1' => 'Administrator',
+									'2' => 'User',
+								);
+
+
+								foreach ($notes as $row) {
+
+									$pchenter = explode("\r\n", $row['note']);
+									$txtout = "";
+									for ($i = 0; $i <= count($pchenter) - 1; $i++) {
+										$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
+										$txtout .= $pchpart;
+									}
+									echo "<tr >
+									<td >" . $no . "</td>
+									<td>" . $row['username'] . "</td>
+									<td>" . $userlevel[$row['userlevel']] . "</td>
+									<td>" . $shift[$row['shift']] . "</td>
+									<td>" . $row['jam'] . "</td>
+									<td>" . $txtout . "</td>
+
+									</tr>";
+									$no++;
+								}
+
+								?>
+
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
 </div>

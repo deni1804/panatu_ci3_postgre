@@ -31,11 +31,18 @@
 										'4' => 'Trouble',
 									);
 									foreach ($sekarang as $row) {
+										$pchenter = explode("\r\n", $row['keterangan']);
+										$txtout = "";
+										for ($i = 0; $i <= count($pchenter) - 1; $i++) {
+											$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
+											$txtout .= $pchpart;
+										}
+
 										echo "<tr>
 									<td>" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
 									<td >" . $status[$row['status']] . "</td>
-									<td >" . $row['keterangan'] .  "</td>
+									<td >" . $txtout .  "</td>
 									</tr>";
 									}
 									?>
@@ -74,11 +81,18 @@
 								<tbody>
 									<?php
 									foreach ($kemaren as $row) {
+										$pchenter = explode("\r\n", $row['keterangan']);
+										$txtoutyesterday = "";
+										for ($i = 0; $i <= count($pchenter) - 1; $i++) {
+											$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
+											$txtout .= $pchpart;
+										}
+
 										echo "<tr>
 									<td >" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
 									<td>" . $status[$row['status']] . "</td>
-									<td >" . $row['keterangan'] .  "</td>
+									<td >" . $txtoutyesterday .  "</td>
 									</tr>";
 									}
 									?>
