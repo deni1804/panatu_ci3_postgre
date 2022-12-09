@@ -85,7 +85,7 @@
 										$txtoutyesterday = "";
 										for ($i = 0; $i <= count($pchenter) - 1; $i++) {
 											$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
-											$txtout .= $pchpart;
+											$txtoutyesterday .= $pchpart;
 										}
 
 										echo "<tr>
