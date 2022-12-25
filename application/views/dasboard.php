@@ -52,6 +52,16 @@
             $prima[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
 
+        foreach ($monstrack as $key => $value) {
+
+            $mcl[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
+        };
+        foreach ($kabelbawah as $key => $value) {
+
+            $kabel[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
+        };
+
+
         //print_r(json_encode($dataais, JSON_NUMERIC_CHECK));
         //die();
         ?>
@@ -66,7 +76,9 @@
                         "#483D8B",
                         "#00CED1",
                         "#FF1493",
-                        "#800080"
+                        "#800080",
+                        "#BDB76B",
+                        "#696969"
                     ]
 
                 );
@@ -357,6 +369,68 @@
 
                 chart10.render();
 
+                var chart11 = new CanvasJS.Chart("chartmcl", {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "Monstrack Cileungsi"
+                    },
+                    axisX: {
+
+                        margin: 30
+                    },
+                    axisY: {
+                        title: "Presentase Status",
+                        suffix: "%",
+
+                    },
+                    data: [{
+                        color: "#BDB76B",
+                        type: "spline",
+                        yValueFormatString: "#,##0\"%\"",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+
+
+
+                        dataPoints: <?php echo json_encode($mcl, JSON_NUMERIC_CHECK); ?>
+                    }]
+                });
+
+                chart11.render();
+
+                var chart12 = new CanvasJS.Chart("chartkabel", {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "Kabel Bawah Laut (SKKL)"
+                    },
+                    axisX: {
+
+                        margin: 30
+                    },
+                    axisY: {
+                        title: "Presentase Status",
+                        suffix: "%",
+
+                    },
+                    data: [{
+                        color: "#696969",
+                        type: "spline",
+                        yValueFormatString: "#,##0\"%\"",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+
+
+
+                        dataPoints: <?php echo json_encode($kabel, JSON_NUMERIC_CHECK); ?>
+                    }]
+                });
+
+                chart12.render();
+
+
+
             }
         </script>
         <div class="col-xl-12 col-lg-7">
@@ -369,6 +443,7 @@
                                 <div class="nav nav-tabs" id="nav-tab" role="tablist">
                                     <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Daily Report</a>
                                     <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday Report</a>
+                                    <a class="nav-item nav-link" id="nav-bulan-tab" data-toggle="tab" href="#nav-bulan" role="tab" aria-controls="nav-bulan" aria-selected="false">Monthly Reports</a>
                                     <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">All Reports</a>
 
                                 </div>
@@ -421,6 +496,34 @@
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
 									<td>" . $row['count'] . "</td>
+									</tr>";
+                                            $no++;
+                                        }
+
+                                        ?>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <div class="tab-pane fade" id="nav-bulan" role="tabpanel" aria-labelledby="nav-bulan-tab">
+                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Nama</th>
+                                            <th>Report</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <?php
+                                        $no = 1;
+                                        foreach ($bulan as $row) {
+                                            echo "<tr >
+									<td >" . $no . "</td>
+									<td>" . $row['username'] . "</td>
+									<td>" . $row['count'] . "</td>
+
 									</tr>";
                                             $no++;
                                         }
@@ -692,8 +795,45 @@
                 </div>
             </div>
 
+        </div>
 
+        <div class="col-xl-6 col-lg-7">
+
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Monstrack Cileungsi</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+
+                        <div id="chartmcl" class="w-100 h-100"></div>
+                    </div>
+
+
+                </div>
+            </div>
 
         </div>
+        <div class="col-xl-6 col-lg-7">
+
+            <!-- Area Chart -->
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Kabel Bawah Laut (SKKL)</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+
+                        <div id="chartkabel" class="w-100 h-100"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+
     </div>
 </div>
