@@ -28,7 +28,9 @@ class Dasboard extends CI_Controller
 
             $harian = $this->dbpantau->get_karyawan(1)->result_array();
             $yesterday = $this->dbpantau->get_karyawan(2)->result_array();
-            $bulan = $this->dbpantau->get_karyawan(5)->result_array();
+            //$bulan = $this->dbpantau->get_karyawan(5)->result_array();
+            $bulan = $this->dbpantau->get_bulan()->result_array();
+
             if ($this->session->userdata("userlevel") == 1) {
 
                 $allrepots = $this->dbpantau->get_karyawan(3)->result_array();

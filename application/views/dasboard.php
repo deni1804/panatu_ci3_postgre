@@ -507,6 +507,21 @@
                             </div>
 
                             <div class="tab-pane fade" id="nav-bulan" role="tabpanel" aria-labelledby="nav-bulan-tab">
+                                <form action="<?php base_url('Dasboard/') ?>" method='POST'>
+                                    <div class="row">
+                                        <div class="col-auto ">
+                                            <label for="dari_tanggal" class="text-primary">Start Date</label>
+                                            <input type="month" name="bulan" id="bulan" value="<?= $this->input->post('bulan') ?>">
+                                        </div>
+                                        <div class="col-auto">
+                                            <button type="submit" class="btn btn-primary btn-sm" name="caribulan">
+                                                Search
+                                            </button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <br>
+
                                 <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
