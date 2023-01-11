@@ -69,7 +69,7 @@
                                 text: "Periode <?= $this->input->post('month') ?>       Jumlah  <?php foreach ($jumlah as $row) {
                                                                                                     echo $row['count'];
                                                                                                 } ?> Report ",
-                                fontSize: 10,
+                                fontSize: 15,
                             }],
                             axisX: {
 
