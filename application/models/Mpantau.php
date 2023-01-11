@@ -189,6 +189,56 @@ class Mpantau extends CI_Model
 		return $this->db->query($query);
 	}
 
+
+	function get_jumlah()
+	{
+		$idkaryawan = $this->uri->segment(3);
+		if (isset($_POST['search'])) {
+			$bulanan = $this->input->post('month');
+
+			if ($bulanan !== null) {
+				$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND 
+				to_char(ps.tanggaljam, 'yyyy-mm') = '$bulanan' AND kh.idkaryawan = $idkaryawan
+				 GROUP BY kh.username , ip.item, kh.idkaryawan";
+			} else {
+				$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND to_char(ps.tanggaljam, 'mm-yyyy') = to_char(NOW()AT TIME ZONE 'Asia/Jakarta', 'mm-yyyy') AND kh.idkaryawan = $idkaryawan GROUP BY kh.username , ip.item, kh.idkaryawan";
+			}
+		} else {
+			$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, COUNT(*) FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan WHERE  ps.iditem =  1  AND to_char(ps.tanggaljam, 'mm-yyyy') = to_char(NOW()AT TIME ZONE 'Asia/Jakarta', 'mm-yyyy') AND kh.idkaryawan = $idkaryawan GROUP BY kh.username , ip.item, kh.idkaryawan";
+		}
+		return $this->db->query($query);
+	}
+
+
+	function get_bulankaryawan()
+	{
+		$idkaryawan = $this->uri->segment(3);
+		if (isset($_POST['search'])) {
+			$bulanan = $this->input->post('month');
+
+			if ($bulanan !== null) {
+				$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan , count(ps.iditem),to_char(ps.tanggaljam, 'dd-mm-yyyy') AS jam
+				FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan 
+				WHERE  ps.iditem =  1  AND 
+				to_char(ps.tanggaljam, 'yyyy-mm') = '$bulanan' AND kh.idkaryawan = $idkaryawan
+				GROUP BY kh.username , ip.item, kh.idkaryawan, jam";
+			} else {
+				$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, count(ps.iditem) ,to_char(ps.tanggaljam, 'dd-mm-yyyy') AS jam
+				 FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan 
+				 WHERE  ps.iditem =  1  AND 
+				 to_char(ps.tanggaljam, 'mm-yyyy') = to_char(NOW()AT TIME ZONE 'Asia/Jakarta', 'mm-yyyy') AND kh.idkaryawan = $idkaryawan
+				 GROUP BY kh.username , ip.item, kh.idkaryawan, jam";
+			}
+		} else {
+			$query = "SELECT kh.username AS username, ip.item AS item, kh.idkaryawan as idkaryawan, count(ps.iditem) ,to_char(ps.tanggaljam, 'dd-mm-yyyy') AS jam
+			FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem JOIN kh_karyawan kh ON ps.idkaryawan = kh.idkaryawan 
+			WHERE  ps.iditem =  1  AND 
+			to_char(ps.tanggaljam, 'mm-yyyy') = to_char(NOW()AT TIME ZONE 'Asia/Jakarta', 'mm-yyyy') AND kh.idkaryawan = $idkaryawan
+			GROUP BY kh.username , ip.item, kh.idkaryawan, jam";
+		}
+		return $this->db->query($query);
+	}
+
 	function get_karyawan($list)
 	{
 		if ($list == 1) {

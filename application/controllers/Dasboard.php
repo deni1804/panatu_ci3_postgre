@@ -25,11 +25,11 @@ class Dasboard extends CI_Controller
             $primasaver = $this->dbpantau->get_dasboard(12)->result_array();
             $monstrack = $this->dbpantau->get_dasboard(13)->result_array();
             $kabelbawah = $this->dbpantau->get_dasboard(14)->result_array();
-
             $harian = $this->dbpantau->get_karyawan(1)->result_array();
             $yesterday = $this->dbpantau->get_karyawan(2)->result_array();
-            //$bulan = $this->dbpantau->get_karyawan(5)->result_array();
             $bulan = $this->dbpantau->get_bulan()->result_array();
+
+
 
             if ($this->session->userdata("userlevel") == 1) {
 
@@ -54,7 +54,29 @@ class Dasboard extends CI_Controller
             redirect('/login/', 'location');
         }
     }
+
+    public function count_karyawan()
+    {
+        if ($this->session->userdata("username") != "") {
+            $month = $this->dbpantau->get_bulankaryawan()->result_array();
+            $jumlah = $this->dbpantau->get_jumlah()->result_array();
+            $idkaryawan = $this->dbpantau->get_historykaryawan()->result_array();
+
+            if ($this->session->userdata("userlevel") == 1) {
+                $this->load->view('include/header');
+                $this->load->view('count_karyawan', array('idkaryawan' => $idkaryawan, 'month' => $month, 'jumlah' => $jumlah));
+                $this->load->view('include/footer');
+            } else {
+                $this->load->view('include/header_user');
+                $this->load->view('count_karyawan', array('idkaryawan' => $idkaryawan));
+                $this->load->view('include/footer');
+            }
+        } else {
+            redirect('/login/', 'location');
+        }
+    }
 }
+
 
 /* End of file welcome.php */
 /* Location: ./application/controllers/welcome.php */

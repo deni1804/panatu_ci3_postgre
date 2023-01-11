@@ -510,7 +510,7 @@
                                 <form action="<?php base_url('Dasboard/') ?>" method='POST'>
                                     <div class="row">
                                         <div class="col-auto ">
-                                            <label for="dari_tanggal" class="text-primary">Start Date</label>
+                                            <label for="dari_tanggal" class="text-primary">Select Month</label>
                                             <input type="month" name="bulan" id="bulan" value="<?= $this->input->post('bulan') ?>">
                                         </div>
                                         <div class="col-auto">
@@ -537,8 +537,7 @@
                                             echo "<tr >
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
-									<td>" . $row['count'] . "</td>
-
+									<td>" . $row['count'] . " &nbsp &nbsp &nbsp <a href='" . site_url() . "dasboard/count_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
 									</tr>";
                                             $no++;
                                         }
