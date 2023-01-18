@@ -13,53 +13,55 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <table id="data" class="table table table-hover" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <!-- <th>Id Item</th> -->
-                                        <th>Item</th>
-                                        <th>Status</th>
-                                        <th>Description</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <?php $i = 1; ?>
-                                    <?php $status = array(
-                                        '1' => 'Active',
-                                        '9' => 'Inactive',
-
-                                    ); ?>
-                                    <?php foreach ($item as $row) { ?>
-                                        <tr id="delete" class="<?= $row['iditem'] ?>">
-                                            <th scope="row"><?= $i; ?></th>
-                                            <!-- <td><?= $row['iditem']; ?></td> -->
-                                            <td><?= $row['item']; ?></td>
-                                            <td><?= $status[$row['idstatus']]; ?></td>
-                                            <td><?= $row['keterangan']; ?></td>
-                                            <td>
-                                                <a href="<?php echo site_url() . 'history/view_edititem/' . $row['iditem']; ?>" class="btn btn-success btn-sm">Edit</a>
-                                                <br>
-                                                <br>
-                                                <button class="delete btn btn-sm btn-danger" data-id="<?= $row['iditem'] ?>">
-                                                    Delete
-                                                </button>
-                                                <!-- <a onclick="deleteitem(<?php echo $row['iditem'] ?>)" href="#" data-toggle="tooltip" data-placement="bottom" title="Hapus Item" class="btn btn-sm btn-danger">Delete</a> -->
-
-                                            </td>
+                            <small>
+                                <table id="data" class="table table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <!-- <th>Id Item</th> -->
+                                            <th>Item</th>
+                                            <th>Status</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
                                         </tr>
+                                    </thead>
 
-                                    <?php
-                                        $i++;
-                                    }
-                                    ?>
+                                    <tbody>
+                                        <?php $i = 1; ?>
+                                        <?php $status = array(
+                                            '1' => 'Active',
+                                            '9' => 'Inactive',
+
+                                        ); ?>
+                                        <?php foreach ($item as $row) { ?>
+                                            <tr id="delete" class="<?= $row['iditem'] ?>">
+                                                <th scope="row"><?= $i; ?></th>
+                                                <!-- <td><?= $row['iditem']; ?></td> -->
+                                                <td><?= $row['item']; ?></td>
+                                                <td><?= $status[$row['idstatus']]; ?></td>
+                                                <td><?= $row['keterangan']; ?></td>
+                                                <td>
+                                                    <a href="<?php echo site_url() . 'history/view_edititem/' . $row['iditem']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                                    <br>
+                                                    <br>
+                                                    <button class="delete btn btn-sm btn-danger" data-id="<?= $row['iditem'] ?>">
+                                                        Delete
+                                                    </button>
+                                                    <!-- <a onclick="deleteitem(<?php echo $row['iditem'] ?>)" href="#" data-toggle="tooltip" data-placement="bottom" title="Hapus Item" class="btn btn-sm btn-danger">Delete</a> -->
+
+                                                </td>
+                                            </tr>
+
+                                        <?php
+                                            $i++;
+                                        }
+                                        ?>
 
 
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </small>
                         </div>
                     </div>
                 </div>

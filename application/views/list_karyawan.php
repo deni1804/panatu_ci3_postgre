@@ -12,54 +12,56 @@
                 <div class="card-body">
                     <div class="table-responsive">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <table id="data" class="table table table-hover" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <!-- <th>Id Item</th> -->
-                                        <th>Nama</th>
-                                        <th>User Name</th>
-                                        <th>Email</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-
-                                <tbody>
-                                    <?php $i = 1; ?>
-                                    <?php $status = array(
-                                        '1' => 'Administrator',
-                                        '2' => 'User',
-
-                                    ); ?>
-                                    <?php foreach ($karyawan as $row) { ?>
-                                        <tr id="delete" class="<?= $row['idkaryawan'] ?>">
-                                            <th scope="row"><?= $i; ?></th>
-                                            <!-- <td><?= $row['idkaryawan']; ?></td> -->
-                                            <td><?= $row['namalengkap']; ?></td>
-                                            <td><?= $row['username']; ?></td>
-                                            <td><?= $row['email']; ?></td>
-                                            <td><?= $status[$row['userlevel']]; ?></td>
-
-                                            <td>
-                                                <a href="<?php echo site_url() . 'karyawan/view_editekaryawan/' . $row['idkaryawan']; ?>" class="btn btn-success btn-sm">Edit</a>
-                                                <br>
-                                                <br>
-                                                <button class="delete btn btn-sm btn-danger" data-id="<?= $row['idkaryawan'] ?>">
-                                                    Delete
-                                                </button>
-                                            </td>
+                            <small>
+                                <table id="data" class="table table table-hover" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <!-- <th>Id Item</th> -->
+                                            <th>Nama</th>
+                                            <th>User Name</th>
+                                            <th>Email</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
                                         </tr>
+                                    </thead>
 
-                                    <?php
-                                        $i++;
-                                    }
-                                    ?>
+                                    <tbody>
+                                        <?php $i = 1; ?>
+                                        <?php $status = array(
+                                            '1' => 'Administrator',
+                                            '2' => 'User',
+
+                                        ); ?>
+                                        <?php foreach ($karyawan as $row) { ?>
+                                            <tr id="delete" class="<?= $row['idkaryawan'] ?>">
+                                                <th scope="row"><?= $i; ?></th>
+                                                <!-- <td><?= $row['idkaryawan']; ?></td> -->
+                                                <td><?= $row['namalengkap']; ?></td>
+                                                <td><?= $row['username']; ?></td>
+                                                <td><?= $row['email']; ?></td>
+                                                <td><?= $status[$row['userlevel']]; ?></td>
+
+                                                <td>
+                                                    <a href="<?php echo site_url() . 'karyawan/view_editekaryawan/' . $row['idkaryawan']; ?>" class="btn btn-success btn-sm">Edit</a>
+                                                    <br>
+                                                    <br>
+                                                    <button class="delete btn btn-sm btn-danger" data-id="<?= $row['idkaryawan'] ?>">
+                                                        Delete
+                                                    </button>
+                                                </td>
+                                            </tr>
+
+                                        <?php
+                                            $i++;
+                                        }
+                                        ?>
 
 
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </small>
                         </div>
                     </div>
                 </div>

@@ -435,149 +435,150 @@
         </script>
         <div class="col-xl-12 col-lg-7">
             <div class="card shadow mb-4">
+                <small>
+                    <div class="card text-center">
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                                <nav>
+                                    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                                        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Daily Report</a>
+                                        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday Report</a>
+                                        <a class="nav-item nav-link" id="nav-bulan-tab" data-toggle="tab" href="#nav-bulan" role="tab" aria-controls="nav-bulan" aria-selected="false">Monthly Reports</a>
+                                        <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">All Reports</a>
 
-                <div class="card text-center">
-                    <div class="card-header">
-                        <ul class="nav nav-tabs card-header-tabs">
-                            <nav>
-                                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                                    <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Daily Report</a>
-                                    <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Yesterday Report</a>
-                                    <a class="nav-item nav-link" id="nav-bulan-tab" data-toggle="tab" href="#nav-bulan" role="tab" aria-controls="nav-bulan" aria-selected="false">Monthly Reports</a>
-                                    <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">All Reports</a>
+                                    </div>
+                                </nav>
+                            </ul>
+                        </div>
+                        <div class="card-body">
+                            <div class="tab-content" id="nav-tabContent">
+                                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>Report</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($harian as $row) {
+                                                echo "<tr >
+									<td >" . $no . "</td>
+									<td>" . $row['username'] . "</td>
+									<td>" . $row['count'] . "</td>
+
+									</tr>";
+                                                $no++;
+                                            }
+
+                                            ?>
+                                        </tbody>
+                                    </table>
 
                                 </div>
-                            </nav>
-                        </ul>
-                    </div>
-                    <div class="card-body">
-                        <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Report</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($harian as $row) {
-                                            echo "<tr >
-									<td >" . $no . "</td>
-									<td>" . $row['username'] . "</td>
-									<td>" . $row['count'] . "</td>
-
-									</tr>";
-                                            $no++;
-                                        }
-
-                                        ?>
-                                    </tbody>
-                                </table>
-
-                            </div>
-                            <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
-                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Report</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($yesterday as $row) {
-                                            echo "<tr>
+                                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>Report</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($yesterday as $row) {
+                                                echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
 									<td>" . $row['count'] . "</td>
 									</tr>";
-                                            $no++;
-                                        }
+                                                $no++;
+                                            }
 
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            ?>
+                                        </tbody>
+                                    </table>
 
-                            </div>
+                                </div>
 
-                            <div class="tab-pane fade" id="nav-bulan" role="tabpanel" aria-labelledby="nav-bulan-tab">
-                                <form action="<?php base_url('Dasboard/') ?>" method='POST'>
-                                    <div class="row">
-                                        <div class="col-auto ">
-                                            <label for="dari_tanggal" class="text-primary">Select Month</label>
-                                            <input type="month" name="bulan" id="bulan" value="<?= $this->input->post('bulan') ?>">
+                                <div class="tab-pane fade" id="nav-bulan" role="tabpanel" aria-labelledby="nav-bulan-tab">
+                                    <form action="<?php base_url('Dasboard/') ?>" method='POST'>
+                                        <div class="row">
+                                            <div class="col-auto ">
+                                                <label for="dari_tanggal" class="text-primary">Select Month</label>
+                                                <input type="month" name="bulan" id="bulan" value="<?= $this->input->post('bulan') ?>">
+                                            </div>
+                                            <div class="col-auto">
+                                                <button type="submit" class="btn btn-primary btn-sm" name="caribulan">
+                                                    Search
+                                                </button>
+                                            </div>
                                         </div>
-                                        <div class="col-auto">
-                                            <button type="submit" class="btn btn-primary btn-sm" name="caribulan">
-                                                Search
-                                            </button>
-                                        </div>
-                                    </div>
-                                </form>
-                                <br>
+                                    </form>
+                                    <br>
 
-                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>Report</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($bulan as $row) {
-                                            echo "<tr >
+                                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>Report</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($bulan as $row) {
+                                                echo "<tr >
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
 									<td>" . $row['count'] . " &nbsp &nbsp &nbsp <a href='" . site_url() . "dasboard/count_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
 									</tr>";
-                                            $no++;
-                                        }
+                                                $no++;
+                                            }
 
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            ?>
+                                        </tbody>
+                                    </table>
 
-                            </div>
+                                </div>
 
-                            <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-                                <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>No</th>
-                                            <th>Nama</th>
-                                            <th>History All</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <?php
-                                        $no = 1;
-                                        foreach ($allrepots as $row) {
-                                            echo "<tr>
+                                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                                    <table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+                                        <thead>
+                                            <tr>
+                                                <th>No</th>
+                                                <th>Nama</th>
+                                                <th>History All</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <?php
+                                            $no = 1;
+                                            foreach ($allrepots as $row) {
+                                                echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
                                     <td><a href='" . site_url() . "history/history_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
 									</tr>";
-                                            $no++;
-                                        }
+                                                $no++;
+                                            }
 
-                                        ?>
-                                    </tbody>
-                                </table>
+                                            ?>
+                                        </tbody>
+                                    </table>
+
+                                </div>
 
                             </div>
-
                         </div>
                     </div>
-                </div>
+                </small>
             </div>
 
         </div>

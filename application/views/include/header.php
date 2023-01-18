@@ -105,13 +105,13 @@
 			</div>
 
 			<!-- Divider -->
-			<hr class="sidebar-divider my-0">
+			<hr class="sidebar-divide my-0">
 
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item ">
+			<li class="nav-item">
 				<a class="nav-link" href="<?php echo site_url() . 'dasboard'; ?>">
 					<i class="fas fa-fw fa-home"></i>
-					<span>Dashboard</span></a>
+					<span><small>Dashboard</small></span></a>
 			</li>
 
 			<!-- Divider -->
@@ -126,13 +126,15 @@
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
 					<i class="fas fa-fw fa-laptop"></i>
-					<span>Monitoring</span>
+					<span><small>Monitoring</small> </span>
 				</a>
 				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
 						<h6 class="collapse-header">Monitoring :</h6>
-						<a class="collapse-item fas fa-laptop-code" href="<?php echo site_url() . 'pantau'; ?>">&ensp;Monitoring Report</a>
-						<a class="collapse-item fas fa-history" href="<?php echo site_url() . 'history'; ?>">&ensp;History</a>
+						<small>
+							<a class="collapse-item fas fa-laptop-code" href="<?php echo site_url() . 'pantau'; ?>">&ensp;Monitoring Report</a>
+							<a class="collapse-item fas fa-history" href="<?php echo site_url() . 'history'; ?>">&ensp;History</a>
+						</small>
 
 					</div>
 
@@ -144,15 +146,17 @@
 			<li class="nav-item">
 				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
 					<i class="fas fa-fw fa-wrench"></i>
-					<span>Utilities</span>
+					<span><small>Utilities</small> </span>
 				</a>
 				<div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
 					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">Utilities:</h6>
-						<a class="collapse-item fas  fa-th-list" href="<?php echo site_url() . 'history/item'; ?>">&ensp;List Item</a>
-						<a class="collapse-item fas fa-list-alt" href="<?php echo site_url() . 'karyawan/registration'; ?>">&ensp;Registration</a>
-						<a class="collapse-item fas  fa-users" href="<?php echo site_url() . 'karyawan/'; ?>">&ensp;List Karyawan</a>
-						<a class="collapse-item fas fa-exclamation" href="<?php echo site_url() . 'help'; ?>">&emsp;&nbsp;Help</a>
+						<small>
+							<h6 class="collapse-header">Utilities:</h6>
+							<a class="collapse-item fas  fa-th-list" href="<?php echo site_url() . 'history/item'; ?>">&ensp;List Item</a>
+							<a class="collapse-item fas fa-list-alt" href="<?php echo site_url() . 'karyawan/registration'; ?>">&ensp;Registration</a>
+							<a class="collapse-item fas  fa-users" href="<?php echo site_url() . 'karyawan/'; ?>">&ensp;List Karyawan</a>
+							<a class="collapse-item fas fa-exclamation" href="<?php echo site_url() . 'help'; ?>">&emsp;&nbsp;Help</a>
+						</small>
 					</div>
 				</div>
 			</li>
@@ -187,10 +191,12 @@
 							</a>
 							<!-- Dropdown - User Information -->
 							<div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-								<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-									<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-									Logout
-								</a>
+								<small>
+									<a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+										<i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+										Logout
+									</a>
+								</small>
 							</div>
 						</li>
 

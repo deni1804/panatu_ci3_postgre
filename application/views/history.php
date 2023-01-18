@@ -12,42 +12,44 @@
 				<div class="card-body">
 					<div class="table-responsive">
 						<div class="table-wrapper-scroll-y my-custom-scrollbar">
-							<table id="data" class="table table-bordered mb-0" style="width:100%">
-								<thead>
-									<tr>
-										<th>Jam</th>
-										<th>Item</th>
-										<th>Status</th>
-										<th>Keterangan</th>
-									</tr>
-								</thead>
+							<small>
+								<table id="data" class="table table-bordered mb-0" style="width:100%">
+									<thead>
+										<tr>
+											<th>Jam</th>
+											<th>Item</th>
+											<th>Status</th>
+											<th>Keterangan</th>
+										</tr>
+									</thead>
 
-								<tbody>
-									<?php
-									$status = array(
-										'1' => 'OK',
-										'2' => 'Cukup Baik',
-										'3' => 'Kurang Baik',
-										'4' => 'Trouble',
-									);
-									foreach ($sekarang as $row) {
-										$pchenter = explode("\r\n", $row['keterangan']);
-										$txtout = "";
-										for ($i = 0; $i <= count($pchenter) - 1; $i++) {
-											$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
-											$txtout .= $pchpart;
-										}
+									<tbody>
+										<?php
+										$status = array(
+											'1' => 'OK',
+											'2' => 'Cukup Baik',
+											'3' => 'Kurang Baik',
+											'4' => 'Trouble',
+										);
+										foreach ($sekarang as $row) {
+											$pchenter = explode("\r\n", $row['keterangan']);
+											$txtout = "";
+											for ($i = 0; $i <= count($pchenter) - 1; $i++) {
+												$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
+												$txtout .= $pchpart;
+											}
 
-										echo "<tr>
+											echo "<tr>
 									<td>" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
 									<td >" . $status[$row['status']] . "</td>
 									<td >" . $txtout .  "</td>
 									</tr>";
-									}
-									?>
-								</tbody>
-							</table>
+										}
+										?>
+									</tbody>
+								</table>
+							</small>
 						</div>
 					</div>
 				</div>
@@ -68,36 +70,38 @@
 
 					<div class="table-responsive">
 						<div class="table-wrapper-scroll-y my-custom-scrollbar">
-							<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-								<thead>
-									<tr>
-										<th>Jam</th>
-										<th>Item</th>
-										<th>Status</th>
-										<th>Keterangan</th>
-									</tr>
-								</thead>
+							<small>
+								<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+									<thead>
+										<tr>
+											<th>Jam</th>
+											<th>Item</th>
+											<th>Status</th>
+											<th>Keterangan</th>
+										</tr>
+									</thead>
 
-								<tbody>
-									<?php
-									foreach ($kemaren as $row) {
-										$pchenter = explode("\r\n", $row['keterangan']);
-										$txtoutyesterday = "";
-										for ($i = 0; $i <= count($pchenter) - 1; $i++) {
-											$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
-											$txtoutyesterday .= $pchpart;
-										}
+									<tbody>
+										<?php
+										foreach ($kemaren as $row) {
+											$pchenter = explode("\r\n", $row['keterangan']);
+											$txtoutyesterday = "";
+											for ($i = 0; $i <= count($pchenter) - 1; $i++) {
+												$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
+												$txtoutyesterday .= $pchpart;
+											}
 
-										echo "<tr>
+											echo "<tr>
 									<td >" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
 									<td>" . $status[$row['status']] . "</td>
 									<td >" . $txtoutyesterday .  "</td>
 									</tr>";
-									}
-									?>
-								</tbody>
-							</table>
+										}
+										?>
+									</tbody>
+								</table>
+							</small>
 						</div>
 					</div>
 				</div>
@@ -113,30 +117,31 @@
 				</div>
 				<div class="card-body">
 					<div class="chart-area">
-						<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Nama</th>
-									<th>Report</th>
-								</tr>
-							</thead>
-							<tbody>
-								<?php
-								$no = 1;
-								foreach ($karyawan as $row) {
-									echo "<tr>
+						<small>
+							<table class="table table-bordered table-hover" id="dataTable" width="100%" cellspacing="0">
+								<thead>
+									<tr>
+										<th>No</th>
+										<th>Nama</th>
+										<th>Report</th>
+									</tr>
+								</thead>
+								<tbody>
+									<?php
+									$no = 1;
+									foreach ($karyawan as $row) {
+										echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
 									<td>" . $row['count'] . "</td>
 									</tr>";
-									$no++;
-								}
+										$no++;
+									}
 
-								?>
-							</tbody>
-						</table>
-
+									?>
+								</tbody>
+							</table>
+						</small>
 					</div>
 
 

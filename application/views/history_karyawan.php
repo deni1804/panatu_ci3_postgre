@@ -39,39 +39,40 @@
                 <div class="card-body ">
                     <div class="table-responsive">
                         <div class="table-wrapper-scroll-y my-custom-scrollbar">
-                            <table id="data" class="table table-bordered mb-0" style="width:100%">
-                                <thead>
-                                    <tr>
-                                        <th>No</th>
-                                        <th>Tanggal</th>
-                                        <th>Jam</th>
-                                        <th>Item</th>
-                                        <th>Status</th>
-                                        <th>Keterangan</th>
-                                    </tr>
-                                </thead>
+                            <small>
+                                <table id="data" class="table table-bordered mb-0" style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Tanggal</th>
+                                            <th>Jam</th>
+                                            <th>Item</th>
+                                            <th>Status</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
 
-                                <tbody>
-                                    <?php
+                                    <tbody>
+                                        <?php
 
-                                    $i = 1;
-                                    $status = array(
-                                        '1' => 'OK',
-                                        '2' => 'Cukup Baik',
-                                        '3' => 'Kurang Baik',
-                                        '4' => 'Trouble',
-                                    );
+                                        $i = 1;
+                                        $status = array(
+                                            '1' => 'OK',
+                                            '2' => 'Cukup Baik',
+                                            '3' => 'Kurang Baik',
+                                            '4' => 'Trouble',
+                                        );
 
 
-                                    foreach ($historyall as $row) {
-                                        $pchenter = explode("\r\n", $row['keterangan']);
-                                        $txtout = "";
-                                        for ($i = 0; $i <= count($pchenter) - 1; $i++) {
-                                            $pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
-                                            $txtout .= $pchpart;
-                                        }
+                                        foreach ($historyall as $row) {
+                                            $pchenter = explode("\r\n", $row['keterangan']);
+                                            $txtout = "";
+                                            for ($i = 0; $i <= count($pchenter) - 1; $i++) {
+                                                $pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
+                                                $txtout .= $pchpart;
+                                            }
 
-                                        echo "<tr>
+                                            echo "<tr>
                                     <td scope='row'>" . $i . "</td>   
                                     <td>" . $row['tanggal'] . "</td>
 									<td>" . $row['jam'] . "</td>
@@ -79,12 +80,13 @@
 									<td >" . $status[$row['status']]  . "</td>
 									<td >" . $txtout .  "</td>
 									</tr>";
-                                        $i++;
-                                    }
-                                    ?>
+                                            $i++;
+                                        }
+                                        ?>
 
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </small>
                         </div>
                     </div>
                 </div>
