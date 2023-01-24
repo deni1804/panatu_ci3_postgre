@@ -24,8 +24,9 @@ class Pantau extends CI_Controller
 			} else {
 				$item = $this->dbpantau->get_item()->result_array();
 				$pantau = $this->dbpantau->get_pantau()->result_array();
+				$notes = $this->dbpantau->get_note()->result_array();
 				$this->load->view('include/header_user');
-				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau));
+				$this->load->view('pantau', array('item' => $item, 'pantau' => $pantau,  'notes' => $notes));
 				$this->load->view('include/footer');
 			}
 		} else {

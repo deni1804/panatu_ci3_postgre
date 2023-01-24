@@ -564,7 +564,8 @@
                                                 echo "<tr>
 									<td >" . $no . "</td>
 									<td>" . $row['username'] . "</td>
-                                    <td><a href='" . site_url() . "history/history_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
+                                    <td>
+                                    <a href='" . site_url() . "history/history_karyawan/" . $row['idkaryawan'] . "' class='btn btn-success btn-sm'>View</a> </td>
 									</tr>";
                                                 $no++;
                                             }
