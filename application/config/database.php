@@ -87,9 +87,6 @@ $db['default'] = array(
 	
 
 
-
-
-	
 'hostname' => 'localhost',
 	'username' => 'postgres',
 	'password' => 'deni',
@@ -97,11 +94,14 @@ $db['default'] = array(
 	'database' => 'pantau',
 
 	
+
+
+	
+
 	
 
 	
 	*/
-
 
 	'hostname' => 'pgsql:host=localhost;dbname=pantau',
 	'username' => 'monitoring',

@@ -178,6 +178,7 @@
 										<th>Shift</th>
 										<th>Tanggal</th>
 										<th>Notes</th>
+										<th>Action</th>
 									</tr>
 								</thead>
 
@@ -204,20 +205,33 @@
 										for ($i = 0; $i <= count($pchenter) - 1; $i++) {
 											$pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
 											$txtout .= $pchpart;
-										}
-										echo "<tr >
-									<td >" . $no . "</td>
-									<td>" . $row['username'] . "</td>
-									<td>" . $userlevel[$row['userlevel']] . "</td>
-									<td>" . $shift[$row['shift']] . "</td>
-									<td>" . $row['jam'] . "</td>
-									<td>" . $txtout . "</td>
+										} ?>
+										<tr id="delete" class="<?= $row['idnote'] ?>">
+											<td><?= $no; ?></td>
+											<!-- <td><?= $row['idnote']; ?></td> -->
+											<td><?= $row['username']; ?></td>
+											<td><?= $userlevel[$row['userlevel']]; ?></td>
+											<td><?= $shift[$row['shift']]; ?></td>
+											<td><?= $row['jam']; ?></td>
+											<td><?= $txtout; ?></td>
+											<td>
+												<a href="<?php echo site_url() . 'pantau/view_editnote/' . $row['idnote']; ?>" class="btn btn-success btn-sm">Edit</a>
+												<br>
+												<br>
+												<button class="delete btn btn-sm btn-danger" data-id="<?= $row['idnote'] ?>">
+													Delete
+												</button>
+											</td>
 
-									</tr>";
+
+										</tr>
+									<?php
 										$no++;
 									}
-
 									?>
+
+
+
 
 								</tbody>
 							</table>
@@ -229,3 +243,37 @@
 	</div>
 
 </div>
+
+<script>
+	$(document).on("click.ev", ".delete", function(e) {
+		e.preventDefault();
+		var id = $(this).attr('data-id');
+		swal({
+			title: "Anda Yakin ?",
+			text: "Data ini akan Dihapus Secara Permanen",
+			type: "warning",
+			showCancelButton: true,
+			confirmButtonText: "Yes, delete it !",
+			closeOnConfirm: false
+		}, function() {
+			$.ajax({
+				url: "<?= base_url('pantau/delete_note/') ?>",
+				type: "post",
+				data: {
+					idnote: id
+				},
+				success: function() {
+					swal('Data Berhasil Di Hapus', '', 'success');
+					$("#delete").fadeTo("slow", 0.7, function() {
+						$("." + id).remove();
+					})
+
+				},
+				error: function() {
+					swal('data gagal di hapus', 'error');
+
+				}
+			})
+		})
+	});
+</script>

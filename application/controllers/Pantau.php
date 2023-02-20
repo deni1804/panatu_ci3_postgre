@@ -179,6 +179,109 @@ class Pantau extends CI_Controller
 			redirect('/login/', 'location');
 		}
 	}
+
+	public function view_editnote($row)
+	{
+		if ($this->session->userdata("username") != "") {
+			if ($this->session->userdata("userlevel") == 1) {
+				$data['idnote'] = $this->dbpantau->get_idnote($row);
+
+				$this->load->view('include/header');
+				$this->load->view('editnote', $data);
+				$this->load->view('include/footer');
+			} else {
+				$data['idnote'] = $this->dbpantau->get_idnote($row);
+
+				$this->load->view('include/header');
+				$this->load->view('editnote', $data);
+				$this->load->view('include/footer');
+			}
+		} else {
+			redirect('/login/', 'location');
+		}
+	}
+
+	public function edit_note($row = null)
+	{
+		if ($this->session->userdata("username") != "") {
+			if ($this->session->userdata("userlevel") == 1) {
+				$this->dbpantau->update_note($row);
+				$this->form_validation->set_rules('note', 'note', 'required|trim');
+
+				if ($this->form_validation->run() == false) {
+
+					$this->load->view('include/header');
+					$this->load->view('addnote');
+					$this->load->view('include/footer');
+				} else {
+					date_default_timezone_set("Asia/Jakarta");
+					$time = date("Y-m-d G:i:s");
+					$data = [
+						'idnote' => $this->input->post('idnote'),
+						'idkaryawan' => $this->session->userdata('userid'),
+						'note' => $this->input->post('note'),
+						'tanggaljam' => $time,
+						'shift' => $this->input->post('shift'),
+						'userlevel' => $this->session->userdata('userlevel'),
+
+
+
+					];
+					$this->db->UPDATE('ps_note', $data);
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created.</div>');
+					redirect('pantau/');
+				}
+			} else {
+				$this->dbpantau->update_note($row);
+				$this->form_validation->set_rules('note', 'note', 'required|trim');
+
+				if ($this->form_validation->run() == false) {
+
+					$this->load->view('include/header');
+					$this->load->view('addnote');
+					$this->load->view('include/footer');
+				} else {
+					date_default_timezone_set("Asia/Jakarta");
+					$time = date("Y-m-d G:i:s");
+					$data = [
+						'idnote' => $this->input->post('idnote'),
+						'idkaryawan' => $this->session->userdata('userid'),
+						'note' => $this->input->post('note'),
+						'tanggaljam' => $time,
+						'shift' => $this->input->post('shift'),
+						'userlevel' => $this->session->userdata('userlevel'),
+
+
+
+					];
+					$this->db->UPDATE('ps_note', $data);
+					$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Congratulation! your account has been created.</div>');
+					redirect('pantau/');
+				}
+			}
+		} else {
+			redirect('/login/', 'location');
+		}
+	}
+
+	public function delete_note()
+	{
+		if ($this->session->userdata("username") != "") {
+			if ($this->session->userdata("userlevel") == 1) {
+				$row = $this->input->post('idnote');
+				$this->dbpantau->delete_note($row);
+
+				redirect('pantau/');
+			} else {
+				$row = $this->input->post('idnote');
+				$this->dbpantau->delete_note($row);
+
+				redirect('pantau/');
+			}
+		} else {
+			redirect('/login/', 'location');
+		}
+	}
 }
 
 /* End of file welcome.php */

@@ -27,13 +27,13 @@
                                     </thead>
 
                                     <tbody>
-                                        <?php $i = 1; ?>
-                                        <?php $status = array(
+                                        <?php $i = 1;
+                                        $status = array(
                                             '1' => 'Active',
                                             '9' => 'Inactive',
 
-                                        ); ?>
-                                        <?php foreach ($item as $row) { ?>
+                                        );
+                                        foreach ($item as $row) { ?>
                                             <tr id="delete" class="<?= $row['iditem'] ?>">
                                                 <th scope="row"><?= $i; ?></th>
                                                 <!-- <td><?= $row['iditem']; ?></td> -->
