@@ -56,11 +56,13 @@
 
             $mcl[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
+        /*
+        //json kabel bawah laut
         foreach ($kabelbawah as $key => $value) {
 
             $kabel[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
-
+*/
 
         //print_r(json_encode($dataais, JSON_NUMERIC_CHECK));
         //die();
@@ -398,38 +400,39 @@
                 });
 
                 chart11.render();
+                /*
+                //javascript kabel bawah laut
+                                var chart12 = new CanvasJS.Chart("chartkabel", {
+                                    exportEnabled: true,
+                                    animationEnabled: true,
+                                    title: {
+                                        text: "Kabel Bawah Laut (SKKL)"
+                                    },
+                                    axisX: {
 
-                var chart12 = new CanvasJS.Chart("chartkabel", {
-                    exportEnabled: true,
-                    animationEnabled: true,
-                    title: {
-                        text: "Kabel Bawah Laut (SKKL)"
-                    },
-                    axisX: {
+                                        margin: 30
+                                    },
+                                    axisY: {
+                                        title: "Presentase Status",
+                                        suffix: "%",
 
-                        margin: 30
-                    },
-                    axisY: {
-                        title: "Presentase Status",
-                        suffix: "%",
-
-                    },
-                    data: [{
-                        color: "#696969",
-                        type: "spline",
-                        yValueFormatString: "#,##0\"%\"",
-                        legendText: "{label}",
-                        indexLabelFontSize: 16,
-
-
-
-                        dataPoints: <?php echo json_encode($kabel, JSON_NUMERIC_CHECK); ?>
-                    }]
-                });
-
-                chart12.render();
+                                    },
+                                    data: [{
+                                        color: "#696969",
+                                        type: "spline",
+                                        yValueFormatString: "#,##0\"%\"",
+                                        legendText: "{label}",
+                                        indexLabelFontSize: 16,
 
 
+
+                                        dataPoints: <?php echo json_encode($kabel, JSON_NUMERIC_CHECK); ?>
+                                    }]
+                                });
+
+                                chart12.render();
+
+                */
 
             }
         </script>
@@ -831,9 +834,10 @@
             </div>
 
         </div>
+        <!-- Area Chart
         <div class="col-xl-6 col-lg-7">
 
-            <!-- Area Chart -->
+             
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Kabel Bawah Laut (SKKL)</h6>
@@ -849,7 +853,7 @@
             </div>
 
         </div>
-
+-->
 
     </div>
 </div>
