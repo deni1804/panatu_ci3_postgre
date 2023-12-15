@@ -72,12 +72,12 @@ class Mpantau extends CI_Model
 			} else {
 				$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
 		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
-		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam, ip.item DESC";
+		WHERE ps.idkaryawan = $idkaryawan AND to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW() AT TIME ZONE 'Asia/Jakarta', 'mm-dd-yyyy') ORDER BY ps.tanggaljam, ip.item DESC";
 			}
 		} else {
 			$query = "SELECT ip.item AS item, to_char(ps.tanggaljam, 'hh24:mi:ss') AS jam, to_char(ps.tanggaljam, 'dd-mm-yyyy') AS tanggal, ps.status, ps.keterangan 
 		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
-		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam DESC";
+		WHERE ps.idkaryawan = $idkaryawan AND to_char(ps.tanggaljam, 'mm-dd-yyyy') = to_char(NOW() AT TIME ZONE 'Asia/Jakarta', 'mm-dd-yyyy') ORDER BY ps.tanggaljam DESC";
 		}
 
 
