@@ -65,13 +65,14 @@
 
 
                                         foreach ($historyall as $row) {
+                                            /*
                                             $pchenter = explode("\r\n", $row['keterangan']);
                                             $txtout = "";
                                             for ($i = 0; $i <= count($pchenter) - 1; $i++) {
                                                 $pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
                                                 $txtout .= $pchpart;
                                             }
-
+*/
                                             echo "<tr>
                                     <td scope='row'>" . $i . "</td>   
                                     <td>" . $row['tanggal'] . "</td>

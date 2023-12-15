@@ -79,6 +79,8 @@ class Mpantau extends CI_Model
 		FROM ps_pantauansistem ps INNER JOIN ps_itempantauan ip ON ps.iditem = ip.iditem 
 		WHERE ps.idkaryawan = $idkaryawan ORDER BY ps.tanggaljam DESC";
 		}
+
+
 		return $this->db->query($query);
 	}
 
