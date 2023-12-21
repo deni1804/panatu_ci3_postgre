@@ -55,7 +55,7 @@
                                     <tbody>
                                         <?php
 
-                                        $i = 1;
+                                        $b = 1;
                                         $status = array(
                                             '1' => 'OK',
                                             '2' => 'Cukup Baik',
@@ -65,23 +65,23 @@
 
 
                                         foreach ($historyall as $row) {
-                                            /*
+
                                             $pchenter = explode("\r\n", $row['keterangan']);
                                             $txtout = "";
                                             for ($i = 0; $i <= count($pchenter) - 1; $i++) {
                                                 $pchpart = str_replace($pchenter[$i], "<br>" . $pchenter[$i], $pchenter[$i]);
                                                 $txtout .= $pchpart;
                                             }
-*/
+
                                             echo "<tr>
-                                    <td scope='row'>" . $i . "</td>   
+                                    <td scope='row'>" . $b . "</td>   
                                     <td>" . $row['tanggal'] . "</td>
 									<td>" . $row['jam'] . "</td>
 									<td>" . $row['item'] . "</td>
 									<td >" . $status[$row['status']]  . "</td>
 									<td >" . $txtout .  "</td>
 									</tr>";
-                                            $i++;
+                                            $b++;
                                         }
                                         ?>
 
