@@ -22,7 +22,7 @@ date_default_timezone_set("Asia/Jakarta");
 |
 | If you need to allow multiple domains, remember that this file is still
 | a PHP script and you can easily do that on your own.
-|
+|tes 1 2 3
 */
 //$config['base_url'] = 'http://localhost/pantau/';
 $config['base_url'] = 'http://192.168.7.31/pantau/';
