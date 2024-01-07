@@ -32,7 +32,7 @@ class History extends CI_Controller
 			redirect('/login/', 'location');
 		}
 	}
-
+//komen aja dah tes github
 	public function history_karyawan()
 	{
 		if ($this->session->userdata("username") != "") {
