@@ -381,7 +381,7 @@
                     exportEnabled: true,
                     animationEnabled: true,
                     title: {
-                        text: "Monstrack Cileungsi"
+                        text: "Monstrack Cileungsi & Meratus"
                     },
                     axisX: {
 
@@ -818,7 +818,7 @@
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">GPS Anouncer Chart</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">GPS ANOUNCER Chart</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -838,7 +838,7 @@
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Prima Saver Chart</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">PRIMA SAVER Chart</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -857,7 +857,7 @@
             <!-- Area Chart -->
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Monstrack Cileungsi</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">MONSTRACK Chart</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
@@ -876,7 +876,7 @@
              
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Pipeline Medco</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">PIPELINE MEDCO Chart</h6>
                 </div>
                 <div class="card-body">
                     <div class="chart-area">
