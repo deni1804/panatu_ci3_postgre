@@ -56,6 +56,11 @@
 
             $mcl[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
         };
+
+        foreach ($pipelinemedco as $key => $value) {
+
+            $medco[] = ['label' => $value['tanggaljam'], 'y' => $value['tingkatstatus']];
+        };
         /*
         //json kabel bawah laut
         foreach ($kabelbawah as $key => $value) {
@@ -80,7 +85,8 @@
                         "#FF1493",
                         "#800080",
                         "#BDB76B",
-                        "#696969"
+                        "#696969",
+                        "#B22222"
                     ]
 
                 );
@@ -400,6 +406,36 @@
                 });
 
                 chart11.render();
+
+                var chart13 = new CanvasJS.Chart("chartmedco", {
+                    exportEnabled: true,
+                    animationEnabled: true,
+                    title: {
+                        text: "Pipeline Medco"
+                    },
+                    axisX: {
+
+                        margin: 30
+                    },
+                    axisY: {
+                        title: "Presentase Status",
+                        suffix: "%",
+
+                    },
+                    data: [{
+                        color: "#B22222",
+                        type: "spline",
+                        yValueFormatString: "#,##0\"%\"",
+                        legendText: "{label}",
+                        indexLabelFontSize: 16,
+
+
+
+                        dataPoints: <?php echo json_encode($medco, JSON_NUMERIC_CHECK); ?>
+                    }]
+                });
+
+                chart13.render();
                 /*
                 //javascript kabel bawah laut
                                 var chart12 = new CanvasJS.Chart("chartkabel", {
@@ -827,6 +863,25 @@
                     <div class="chart-area">
 
                         <div id="chartmcl" class="w-100 h-100"></div>
+                    </div>
+
+
+                </div>
+            </div>
+
+        </div>
+
+        <div class="col-xl-6 col-lg-7">
+
+             
+            <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                    <h6 class="m-0 font-weight-bold text-primary">Pipeline Medco</h6>
+                </div>
+                <div class="card-body">
+                    <div class="chart-area">
+
+                        <div id="chartmedco" class="w-100 h-100"></div>
                     </div>
 
 
